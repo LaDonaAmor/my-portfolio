@@ -1,56 +1,16 @@
 <script lang="ts">
-	import Header from './Header.svelte';
-	import './layout.css';
-
-	let { children } = $props();
+  import '../app.css';
+  import Nav from '$lib/components/Nav.svelte';
+  import CommandPalette from '$lib/components/CommandPalette.svelte';
+  import { fade } from 'svelte/transition';
+  import { page } from '$app/stores';
 </script>
 
-<div class="app">
-	<Header />
-	<main>{@render children()}</main>
-
-	<footer>
-		<p>
-			visit
-			<a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a>
-			to learn about SvelteKit
-		</p>
-	</footer>
-</div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
+<a href="#main" class="sr-only focus:not-sr-only fixed top-2 left-2 bg-accent text-black px-3 py-1 rounded">Skip to content</a>
+<Nav />
+<CommandPalette />
+{#key $page.url.pathname}
+  <main id="main" in:fade={{ duration: 250 }}>
+    <slot />
+  </main>
+{/key}

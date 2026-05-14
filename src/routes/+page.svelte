@@ -1,60 +1,14 @@
 <script lang="ts">
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
-	import welcome from '$lib/images/svelte-welcome.webp';
-
-	import Counter from './Counter.svelte';
+  import Hero from '$lib/components/Hero.svelte';
+  import ProjectCard from '$lib/components/ProjectCard.svelte';
+  import { projects } from '$lib/data/projects';
 </script>
-
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+<svelte:head><title>Your Name — Frontend Engineer</title>
+  <meta name="description" content="Interactive developer portfolio built with SvelteKit." /></svelte:head>
+<Hero />
+<section class="max-w-6xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-10">Selected work</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {#each projects as p, i (p.slug)}<ProjectCard {...p} index={i} />{/each}
+  </div>
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
