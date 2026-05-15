@@ -1,13 +1,76 @@
-// See https://svelte.dev/docs/kit/types#app.d.ts
-// for information about these interfaces
-declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
-		// interface Platform {}
-	}
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07111f;
+  --color-surface: #0d1b2e;
+  --color-surface-2: #12253d;
+  --color-fg: #f5f8fc;
+  /* Link Tailwind's accent color to our CSS variable */
+  --color-accent: var(--color-accent);
+  --color-accent-2: color-mix(in srgb, var(--color-accent), black 20%);
+  --color-ink: #07111f;
+  --color-muted: #a8b5c7;
+  --color-line: #203958;
+  --font-display: "Inter", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
 }
 
-export {};
+:root {
+  /* Default fallback color */
+  --color-accent: #38bdf8;
+}
+
+:root.light {
+  --color-bg: #eef6ff;
+  --color-surface: #ffffff;
+  --color-surface-2: #dcecff;
+  --color-fg: #071827;
+  --color-muted: #51647c;
+  --color-line: #b6d0ea;
+  --color-ink: #06111f;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Ensure transitions happen when the accent changes */
+  transition: --color-accent 0.3s ease;
+}
+
+html,
+body {
+  min-height: 100%;
+  /* Replaced hardcoded rgba with color-mix for dynamic glow */
+  background:
+    radial-gradient(circle at 18% 10%, color-mix(in srgb, var(--color-accent), transparent 80%), transparent 32rem),
+    linear-gradient(180deg, rgba(10, 30, 54, 0.72), transparent 34rem),
+    var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 320ms ease,
+    color 320ms ease;
+}
+
+:root.light body {
+  background:
+    radial-gradient(circle at 16% 8%, color-mix(in srgb, var(--color-accent), transparent 74%), transparent 28rem),
+    radial-gradient(circle at 82% 24%, rgba(96, 165, 250, 0.18), transparent 24rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(238, 246, 255, 0.96) 34rem),
+    var(--color-bg);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent), transparent 70%);
+}
+
+.blue-grid {
+  /* Made the grid lines match the theme color */
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-accent), transparent 92%) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-accent), transparent 92%) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+/* ... keep existing focus-visible and glass styles ... */
