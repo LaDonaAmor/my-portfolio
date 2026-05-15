@@ -23,12 +23,12 @@
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-6">
     <a href={resolve('/')} class="flex items-center gap-3 font-semibold tracking-tight" onclick={closeMenu}>
       <span
-        class="grid size-9 place-items-center rounded-lg border border-accent/30 bg-accent/12 text-sm text-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+        class="grid size-9 place-items-center rounded-lg font-display border border-accent/30 bg-accent/12 text-sm text-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
         aria-hidden="true"
       >
         TN
       </span>
-      <span>TechNurse</span>
+      <span class="font-display text-2xl">TechNurse</span>
     </a>
 
     <div class="hidden items-center gap-4 text-sm text-muted md:flex">

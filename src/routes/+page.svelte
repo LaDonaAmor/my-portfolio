@@ -33,7 +33,7 @@ import DevConsole from '$lib/components/DevConsole.svelte';
   <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Selected Work</p>
-      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Recent product builds</h2>
+      <h2 class="mt-3 font-display text-3xl font-semibold md:text-4xl">Recent product builds</h2>
     </div>
     <a
       href={resolve('/projects')}
@@ -63,7 +63,7 @@ import DevConsole from '$lib/components/DevConsole.svelte';
 <section class="grid gap-6 py-14 lg:grid-cols-[0.82fr_1.18fr]">
   <div>
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Quality Bar</p>
-    <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Useful design, disciplined code.</h2>
+    <h2 class="mt-3 text-3xl font-semibold font-display md:text-4xl">Useful design, disciplined code.</h2>
   </div>
 
   <div class="grid gap-3 sm:grid-cols-2">

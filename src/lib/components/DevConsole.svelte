@@ -32,7 +32,7 @@
   }
 
   let terminalHistory = $state<TerminalLine[]>([
-    createLine('TechNurse OS v2.6 initialized.', 'system'),
+    createLine('TechNurse OS v1.0 initialized.', 'system'),
     createLine("Type 'help' or click code tabs to explore.", 'muted')
   ]);
 

@@ -97,39 +97,45 @@
         </dl>
       </div>
 
-      <div class="hero-line hero-console relative w-full rounded-xl border border-line bg-[#040912]/80 backdrop-blur-md p-1 shadow-2xl">
-        <div class="rounded-lg border border-line/40 bg-[#070e1a] p-5">
-          <div class="flex items-center justify-between border-b border-line/40 pb-4">
-            <p class="font-mono text-xs uppercase tracking-[0.22em] text-accent font-bold">Portfolio OS v1.0</p>
-            <div class="flex items-center gap-1.5">
-              <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span class="font-mono text-[11px] font-medium text-emerald-400/90 uppercase tracking-wider">Production</span>
-            </div>
-          </div>
+ <div class="hero-line hero-console relative w-full rounded-xl border border-line bg-surface/80 backdrop-blur-md p-1 shadow-2xl">
+  <div class="rounded-lg border border-line/60 bg-surface-2/70 p-5">
 
-          <div class="mt-6 grid gap-4">
-            <div class="rounded-lg bg-surface-2/40 border border-line/30 p-4">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-medium tracking-wide text-muted uppercase">Current Engine Architecture</span>
-                <Sparkles size="14" class="text-accent" />
-              </div>
-              <p class="mt-2 text-xl font-bold tracking-tight">Immersive Svelte Product Frameworks</p>
-            </div>
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b border-line/50 pb-4">
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-accent font-bold">Portfolio OS v1.0</p>
+      <div class="flex items-center gap-1.5">
+        <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-mono text-[11px] font-medium text-emerald-600 dark:text-emerald-400/90 uppercase tracking-wider">Production</span>
+      </div>
+    </div>
 
-            <div class="grid grid-cols-2 gap-3 font-mono text-xs">
-              <div class="rounded-md border border-line/30 bg-surface/20 p-3">
-                <span class="text-muted block text-[10px] uppercase">Core Core Stack</span>
-                <span class="mt-1.5 block font-semibold text-fg">SvelteKit + TS</span>
-              </div>
-              <div class="rounded-md border border-line/30 bg-surface/20 p-3">
-                <span class="text-muted block text-[10px] uppercase">Interpolation</span>
-                <span class="mt-1.5 block font-semibold text-fg">Hardware Native</span>
-              </div>
-            </div>
-          </div>
+    <!-- Body -->
+    <div class="mt-6 grid gap-4">
+
+      <!-- Main feature card -->
+      <div class="rounded-lg bg-surface/60 border border-line/40 p-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium tracking-wide text-muted uppercase">Current Engine Architecture</span>
+          <Sparkles size="14" class="text-accent" />
+        </div>
+        <p class="mt-2 text-xl font-bold tracking-tight text-fg">Immersive Svelte Product Frameworks</p>
+      </div>
+
+      <!-- Two mini stat tiles -->
+      <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+        <div class="rounded-md border border-line/40 bg-surface/40 p-3">
+          <span class="text-muted block text-[10px] uppercase">Core Stack</span>
+          <span class="mt-1.5 block font-semibold text-fg">SvelteKit + TS</span>
+        </div>
+        <div class="rounded-md border border-line/40 bg-surface/40 p-3">
+          <span class="text-muted block text-[10px] uppercase">Rendering</span>
+          <span class="mt-1.5 block font-semibold text-fg">Hardware Native</span>
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </section>

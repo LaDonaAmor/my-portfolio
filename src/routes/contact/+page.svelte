@@ -13,7 +13,7 @@
 <section class="grid gap-10 py-12 lg:grid-cols-[0.9fr_1.1fr]">
   <div>
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Contact</p>
-    <h1 class="mt-4 text-4xl font-semibold leading-tight md:text-6xl">Let's build something sharp.</h1>
+    <h1 class="mt-4 text-4xl font-display font-semibold leading-tight md:text-6xl">Let's build something sharp.</h1>
     <p class="mt-5 max-w-xl text-lg leading-8 text-muted">
       Send a focused message about your product, team, or feature. The form validates the basics and opens your mail client when ready.
     </p>
