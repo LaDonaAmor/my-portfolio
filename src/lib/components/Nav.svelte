@@ -44,7 +44,7 @@
     <div class="flex items-center gap-2 md:hidden">
       <ThemeToggle />
       <button
-        class="grid size-10 place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:border-accent/50 hover:text-fg"
+        class="grid size-10 place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:border-accent/50 hover:text-fg cursor-pointer"
         aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
         aria-expanded={open}
         aria-controls="mobile-navigation"

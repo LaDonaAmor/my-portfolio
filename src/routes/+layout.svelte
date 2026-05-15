@@ -1,8 +1,8 @@
 <script lang="ts">
   import '../app.css';
-  /* import AnimatedBackground from '$lib/components/AnimatedBackground.svelte';
+  /* import AnimatedBackground from '$lib/components/AnimatedBackground.svelte';*/
   
-  import CursorField from '$lib/components/CursorField.svelte'; */
+  import CursorField from '$lib/components/CursorField.svelte'; 
   import Nav from '$lib/components/Nav.svelte';
   import CommandPalette from '$lib/components/CommandPalette.svelte';
 /*   import Preloader from '$lib/components/Preloader.svelte';
@@ -11,8 +11,8 @@
 </script>
 
 <!-- <AnimatedBackground />
-<CursorField />
 <Preloader /> -->
+<CursorField />
 <Nav />
 <CommandPalette /> 
 
