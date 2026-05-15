@@ -39,7 +39,10 @@
 		"vite": "^8.0.7"
 	},
 	"dependencies": {
+		"clsx": "^2.1.1",
 		"lucide-svelte": "^1.0.1",
-		"motion": "^12.38.0"
+		"motion": "^12.38.0",
+		"svelte-motion": "^0.12.2",
+		"tailwind-merge": "^3.6.0"
 	}
 }

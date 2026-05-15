@@ -6,10 +6,11 @@
     import Particles from "./Particles.svelte";
 
 
+
   const socials = [
-    { label: 'GitHub', href: 'https://github.com/technurse', icon: Code2 },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/technurse', icon: ArrowRight },
-    { label: 'Email', href: 'mailto:hello@technurse.dev', icon: Mail }
+    { label: 'GitHub', href: 'https://github.com/LaDonaAmor', icon: Code2 },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rachealogunmodede/', icon: ArrowRight },
+    { label: 'Email', href: 'mailto:rachealogunmodede6@gmail.com', icon: Mail }
   ];
 
   onMount(() => {
@@ -30,7 +31,7 @@
 </script>
 
 <section class="hero-stage relative isolate overflow-hidden pb-16 pt-10 md:pb-24 md:pt-16">
-  <div class="blue-grid absolute inset-x-1/2 top-0 -z-10 h-[38rem] w-screen -translate-x-1/2 opacity-80"></div>
+  <div class="blue-grid absolute inset-x-1/2 top-0 -z-10 h-152 w-screen -translate-x-1/2 opacity-80"></div>
   <div class="hero-orbit absolute right-2 top-8 -z-10 hidden h-72 w-72 rounded-full border border-accent/20 lg:block"></div>
 
   <div class="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
@@ -39,17 +40,17 @@
         class="hero-line inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-sm font-medium text-accent"
       >
         <ShieldCheck size="16" />
-        TechNurse - Frontend Engineer / Svelte Developer
+        TechNurse - Frontend Developer
       </p>
 
       <h1
         class="hero-line mt-6 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-normal text-fg md:text-7xl"
       >
-        I build cinematic web interfaces that feel engineered, fast, and alive.
+       Hi, I'm Racheal,
       </h1>
 
       <p class="hero-line mt-6 max-w-2xl text-lg leading-8 text-muted">
-        I am TechNurse, a frontend developer focused on SvelteKit, TypeScript, interaction design, accessibility, and product-grade motion systems.
+       a frontend developer crafting fast, expressive, and accessible web experiences. I build with React, TypeScript, Tailwind CSS, and SvelteKit, turning ideas into interface systems that feel alive. I care about motion that means something, interactions that feel natural, and products that don’t just work they flow.
       </p>
 
       <div class="hero-line mt-8 flex flex-col gap-3 sm:flex-row">
@@ -95,7 +96,7 @@
         </div>
         <div class="rounded-lg border border-line bg-surface/72 p-4">
           <dt class="text-2xl font-semibold text-fg">A11y</dt>
-          <dd class="mt-1 text-muted">First pass</dd>
+          <dd class="mt-1 text-muted">Built for everyone</dd>
         </div>
       </dl>
     </div>
