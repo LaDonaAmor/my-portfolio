@@ -1,9 +1,10 @@
 <script lang="ts">
   import '../app.css';
   /* import AnimatedBackground from '$lib/components/AnimatedBackground.svelte';
-  import CommandPalette from '$lib/components/CommandPalette.svelte';
+  
   import CursorField from '$lib/components/CursorField.svelte'; */
   import Nav from '$lib/components/Nav.svelte';
+  import CommandPalette from '$lib/components/CommandPalette.svelte';
 /*   import Preloader from '$lib/components/Preloader.svelte';
  */
   let { children } = $props();
@@ -13,7 +14,7 @@
 <CursorField />
 <Preloader /> -->
 <Nav />
-<!-- <CommandPalette /> -->
+<CommandPalette /> 
 
 <main id="main" class="page-shell mx-auto min-h-screen max-w-6xl px-5 pt-24 md:px-6">
   {@render children()}
