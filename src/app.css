@@ -1,78 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #07111f;
-  --color-surface: #0d1b2e;
-  --color-surface-2: #12253d;
-  --color-fg: #f5f8fc;
-  /* Link Tailwind's accent color to our CSS variable */
+  --color-bg: #090d16;
+  --color-surface: #0f1626;
+  --color-surface-2: #17223b;
+  --color-fg: #f0f4f9;
   --color-accent: var(--color-accent);
   --color-accent-2: color-mix(in srgb, var(--color-accent), black 20%);
-  --color-ink: #07111f;
-  --color-muted: #a8b5c7;
-  --color-line: #203958;
-  --font-display: "Inter", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+  --color-ink: #090d16;
+  --color-muted: #8fa0ba;
+  --color-line: #1e2d4a;
+  
+  /* Separating display weight from normal text layout scales */
+  --font-display: "Syne", sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 :root {
-  /* Default fallback color */
-  --color-accent: #38bdf8;
+  --color-accent: #6366f1; 
 }
 
 :root.light {
-  --color-bg: #eef6ff;
+  --color-bg: #f4f7fa;
   --color-surface: #ffffff;
-  --color-surface-2: #dcecff;
-  --color-fg: #071827;
-  --color-muted: #51647c;
-  --color-line: #b6d0ea;
-  --color-ink: #06111f;
+  --color-surface-2: #e4ecf5;
+  --color-fg: #0f1626;
+  --color-muted: #5c6b82;
+  --color-line: #cbd5e1;
+  --color-ink: #ffffff;
 }
 
-html {
-  scroll-behavior: smooth;
-  /* Ensure transitions happen when the accent changes */
-  transition: --color-accent 0.3s ease;
-}
-
-html,
-body {
+html, body {
   min-height: 100%;
-  /* Replaced hardcoded rgba with color-mix for dynamic glow */
-  background:
-    radial-gradient(circle at 18% 10%, color-mix(in srgb, var(--color-accent), transparent 80%), transparent 32rem),
-    linear-gradient(180deg, rgba(10, 30, 54, 0.72), transparent 34rem),
-    var(--color-bg);
+  background-color: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  transition:
-    background-color 320ms ease,
-    color 320ms ease;
+  transition: background-color 320ms ease, color 320ms ease;
 }
 
-:root.light body {
-  background:
-    radial-gradient(circle at 16% 8%, color-mix(in srgb, var(--color-accent), transparent 74%), transparent 28rem),
-    radial-gradient(circle at 82% 24%, rgba(96, 165, 250, 0.18), transparent 24rem),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(238, 246, 255, 0.96) 34rem),
-    var(--color-bg);
+/* Rebuilt premium background layout context */
+.hero-stage-backdrop {
+  background: 
+    radial-gradient(circle at 15% 15%, color-mix(in srgb, var(--color-accent), transparent 88%), transparent 40rem),
+    linear-gradient(180deg, rgba(15, 22, 38, 0.4) 0%, transparent 100%);
 }
 
-::selection {
-  background: color-mix(in srgb, var(--color-accent), transparent 70%);
-}
-
-.blue-grid {
-  /* Made the grid lines match the theme color */
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--color-accent), transparent 92%) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--color-accent), transparent 92%) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: linear-gradient(to bottom, black, transparent 82%);
-}
-
-.sveltekit-body {
-	display: contents;
+/* Fixed Grain Component Layer — structural overlay */
+.bg-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
 }

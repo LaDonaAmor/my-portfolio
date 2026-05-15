@@ -2,7 +2,6 @@
   import { ArrowRight, CheckCircle2 } from 'lucide-svelte';
   import Hero from '$lib/components/Hero.svelte';
   import ProjectCard from '$lib/components/ProjectCard.svelte';
-    import ProjectRecommender from '$lib/components/ProjectRecommender.svelte';
     import Assistant from '$lib/components/Assistant.svelte';
 
 
@@ -56,7 +55,6 @@
   </div>
 </section>
 
-<ProjectRecommender />
 <Assistant />
 
 
