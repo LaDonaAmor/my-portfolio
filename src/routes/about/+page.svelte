@@ -71,8 +71,8 @@
   </p>
   <p class="mt-5 reveal">My background in healthcare strengthens my attention to detail, analytical thinking,
         teamwork, and ability to perform in high-responsibility environments. I am passionate
-        about building digital products that are practical, accessible, and impactful—especially
-        in fintech and digital health systems.</p>
+        about building digital products that are practical, accessible, and impactful especially
+        in digital health systems.</p>
 </div>
 </div>
 </section>

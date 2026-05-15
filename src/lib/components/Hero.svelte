@@ -31,6 +31,8 @@
 </script>
 
 <section class="hero-stage relative isolate overflow-hidden pb-16 pt-10 md:pb-24 md:pt-16">
+  <Particles className="absolute inset-0 -z-10 pointer-events-none" refresh={true} />
+
   <div class="blue-grid absolute inset-x-1/2 top-0 -z-10 h-152 w-screen -translate-x-1/2 opacity-80"></div>
   <div class="hero-orbit absolute right-2 top-8 -z-10 hidden h-72 w-72 rounded-full border border-accent/20 lg:block"></div>
 
@@ -96,7 +98,7 @@
         </div>
         <div class="rounded-lg border border-line bg-surface/72 p-4">
           <dt class="text-2xl font-semibold text-fg">A11y</dt>
-          <dd class="mt-1 text-muted">Built for everyone</dd>
+          <dd class="mt-1 text-muted">Built for everyoneBuilt for </dd>
         </div>
       </dl>
     </div>
@@ -142,7 +144,6 @@
       </div>
     </div>
   </div>
-    <Particles className="absolute inset-0" refresh={true} />
 
 </section>
 
