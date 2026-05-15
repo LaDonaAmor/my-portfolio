@@ -73,4 +73,6 @@ body {
   mask-image: linear-gradient(to bottom, black, transparent 82%);
 }
 
-/* ... keep existing focus-visible and glass styles ... */
+.sveltekit-body {
+	display: contents;
+}
