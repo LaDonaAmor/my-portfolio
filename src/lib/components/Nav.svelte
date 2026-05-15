@@ -36,12 +36,12 @@
         <a class="rounded-md px-3 py-2 transition hover:bg-white/7 hover:text-fg" href={link.href}>{link.label}</a>
       {/each}
 
-      <kbd class="rounded-md border border-line bg-surface-2 px-2 py-1 text-xs text-muted">Ctrl K</kbd>
+      <kbd class="rounded-md border  border-line bg-surface-2 px-2 py-1 text-xs text-muted">Ctrl K</kbd>
       <AccentPicker />
       <ThemeToggle />
     </div>
 
-    <div class="flex items-center gap-2 md:hidden">
+    <div class="flex items-center cursor-pointer gap-2 md:hidden">
       <ThemeToggle />
       <button
         class="grid size-10 place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:border-accent/50 hover:text-fg cursor-pointer"
