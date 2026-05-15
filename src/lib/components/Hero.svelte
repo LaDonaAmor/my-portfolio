@@ -46,7 +46,7 @@
         </h1>
 
         <p class="hero-line mt-6 max-w-xl text-base md:text-lg leading-relaxed text-muted font-normal">
-          a frontend developer who enjoys building fast, responsive, and accessible web experiences. I work with React, TypeScript, Tailwind CSS, and SvelteKit to turn ideas into clean, user-friendly interfaces. I pay close attention to the details that make products feel polished—smooth interactions, thoughtful animations, and designs that are both functional and enjoyable to use.
+          a frontend developer who enjoys building fast, responsive, and accessible web experiences. I work with React, TypeScript, Tailwind CSS, and SvelteKit to turn ideas into clean, user-friendly interfaces. I pay close attention to the details that make products feel polished smooth interactions, thoughtful animations, and designs that are both functional and enjoyable to use.
         </p>
 
         <div class="hero-line mt-8 flex flex-col w-full sm:w-auto gap-3.5 sm:flex-row relative z-20">
@@ -100,7 +100,7 @@
       <div class="hero-line hero-console relative w-full rounded-xl border border-line bg-[#040912]/80 backdrop-blur-md p-1 shadow-2xl">
         <div class="rounded-lg border border-line/40 bg-[#070e1a] p-5">
           <div class="flex items-center justify-between border-b border-line/40 pb-4">
-            <p class="font-mono text-xs uppercase tracking-[0.22em] text-accent font-bold">Portfolio OS v2.6</p>
+            <p class="font-mono text-xs uppercase tracking-[0.22em] text-accent font-bold">Portfolio OS v1.0</p>
             <div class="flex items-center gap-1.5">
               <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span class="font-mono text-[11px] font-medium text-emerald-400/90 uppercase tracking-wider">Production</span>
