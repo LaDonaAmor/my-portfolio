@@ -14,10 +14,10 @@ Key facts:
 - Contact: rachealogunmodede6@gmail.com | github.com/LaDonaAmor`;
 
 export const POST: RequestHandler = async ({ request }) => {
-  const apiKey = env.OPENAI_API_KEY;
+const apiKey = env.GROQ_API_KEY;
 
   if (!apiKey) {
-    console.error('OPENAI_API_KEY is missing');
+    console.error('GROQ_API_KEY is missing');
     return json({ error: 'API key not configured.' }, { status: 500 });
   }
 
@@ -28,21 +28,21 @@ export const POST: RequestHandler = async ({ request }) => {
       return json({ error: 'Invalid messages payload.' }, { status: 400 });
     }
 
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini', // cheap, fast, more than capable enough
-        max_tokens: 300,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...messages
-        ]
-      })
-    });
+   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify({
+    model: 'llama-3.1-8b-instant', // free and fast
+    max_tokens: 300,
+    messages: [
+      { role: 'system', content: SYSTEM_PROMPT },
+      ...messages
+    ]
+  })
+});
 
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));

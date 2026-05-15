@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Send, RotateCcw, Bot, Sparkles } from 'lucide-svelte';
 
-  // Add id so each message has a stable, unique key
   type Message = { id: string; role: 'user' | 'assistant'; content: string };
 
   let prompt = $state('');
@@ -98,11 +97,10 @@
       Ask anything about<br />Racheal's work.
     </h2>
     <p class="mt-4 leading-7 text-muted">
-      Powered by Grok and scoped strictly to portfolio data — skills, projects, stack, and availability.
+      Scoped strictly to portfolio data  skills, projects, stack, and availability.
     </p>
 
     <ul class="mt-6 space-y-2.5 text-sm text-muted">
-      <!-- KEY: feature string is unique, safe to use as key -->
       {#each features as feature (feature)}
         <li class="flex items-center gap-2.5">
           <span class="size-1.5 shrink-0 rounded-full bg-accent"></span>
@@ -113,7 +111,7 @@
 
     <div class="mt-8 flex items-center gap-2 text-xs text-muted/60">
       <Sparkles size="13" class="text-accent" />
-      Powered by xAI Grok
+      Powered by Grok
     </div>
   </div>
 

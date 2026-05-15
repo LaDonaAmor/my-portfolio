@@ -5,13 +5,13 @@
   import CursorField from '$lib/components/CursorField.svelte'; 
   import Nav from '$lib/components/Nav.svelte';
   import CommandPalette from '$lib/components/CommandPalette.svelte';
-/*   import Preloader from '$lib/components/Preloader.svelte';
- */
+import Preloader from '$lib/components/Preloader.svelte';
+
   let { children } = $props();
 </script>
 
-<!-- <AnimatedBackground />
-<Preloader /> -->
+<!-- <AnimatedBackground />-->
+<Preloader /> 
 <CursorField />
 <Nav />
 <CommandPalette /> 
