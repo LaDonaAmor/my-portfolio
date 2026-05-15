@@ -42,15 +42,16 @@
 <svelte:head>
   <title>Projects | TechNurse</title>
   <meta name="description" content="All GitHub projects by TechNurse." />
+    	<link rel="icon" href="/favicon.svg" />
+
 </svelte:head>
 
 <section class="py-12">
   <div class="mb-8">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">All Work</p>
-    <h1 class="mt-3 text-3xl font-semibold md:text-4xl">Projects</h1>
+    <h1 class="mt-3 text-3xl font-display font-semibold md:text-4xl">Projects</h1>
   </div>
 
-  <!-- Search + Filter -->
   <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center">
     <input
       type="search"
@@ -76,7 +77,6 @@
     </div>
   </div>
 
-  <!-- Grid -->
   {#if paginated.length}
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {#each paginated as p, i (p.slug)}
@@ -87,7 +87,6 @@
     <p class="text-muted">No projects match your search.</p>
   {/if}
 
-  <!-- Load More -->
   {#if hasMore}
     <div class="mt-10 flex justify-center">
       <button
