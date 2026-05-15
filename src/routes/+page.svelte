@@ -1,14 +1,11 @@
 <script lang="ts">
   import { ArrowRight, CheckCircle2 } from 'lucide-svelte';
   import Hero from '$lib/components/Hero.svelte';
- /*  import IDEPreview from '$lib/components/IDEPreview.svelte';
-  import InteractiveTerminal from '$lib/components/InteractiveTerminal.svelte';
-  import PortfolioAssistant from '$lib/components/PortfolioAssistant.svelte';
   import ProjectCard from '$lib/components/ProjectCard.svelte';
-  import ProjectShowcase from '$lib/components/ProjectShowcase.svelte';
-  import TimelineFlow from '$lib/components/TimelineFlow.svelte';
-  import { projects } from '$lib/data/projects'; */
+  import type { PageData } from './$types';
   import { resolve } from '$app/paths';
+
+  const { data }: { data: PageData } = $props();
 
   const strengths = [
     'Accessible, keyboard-friendly interfaces',
@@ -34,24 +31,25 @@
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Selected Work</p>
       <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Recent product builds</h2>
     </div>
-    <a href={resolve('/projects')} class="inline-flex items-center gap-2 text-sm font-semibold text-accent">
+    <a
+      href={resolve('/projects')}
+      class="inline-flex items-center gap-2 text-sm font-semibold text-accent"
+    >
       View all projects
       <ArrowRight size="16" />
     </a>
   </div>
 
-  <!-- <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-    {#each projects as p, i (p.slug)}
-      <ProjectCard {...p} index={i} />
-    {/each}
-  </div> -->
+  <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {#if data.projects.length}
+      {#each data.projects as p, i (p.slug)}
+        <ProjectCard {...p} index={i} />
+      {/each}
+    {:else}
+      <p class="text-muted">No featured projects yet. Add a <code>featured</code> topic to your GitHub repos.</p>
+    {/if}
+  </div>
 </section>
-
-<!-- <ProjectShowcase {projects} />
-<InteractiveTerminal />
-<PortfolioAssistant />
-<IDEPreview />
-<TimelineFlow /> -->
 
 <section class="grid gap-6 py-14 lg:grid-cols-[0.82fr_1.18fr]">
   <div>

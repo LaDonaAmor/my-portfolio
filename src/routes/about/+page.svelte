@@ -21,7 +21,7 @@
       title: 'Frontend Development Intern - HNG',
       body:
 		'Building production-focused frontend applications with React, emphasizing reusable components, API integration, responsive design, and scalable UI architecture.'    
-	},
+	}, 
     {
       year: '2026 – Present',
       title: 'Frontend Developer Intern — Digital Health Africa',
@@ -93,7 +93,7 @@
   <h2 class="reveal text-2xl font-semibold">Experience</h2>
 
   <div class="mt-8 space-y-6">
-    {#each timeline as item (item.year)}
+    {#each timeline as item (item.title)}
       <article class="reveal rounded-xl border border-line bg-surface/70 p-6">
         <p class="text-sm text-accent font-semibold">{item.year}</p>
         <h3 class="mt-2 text-xl font-semibold">{item.title}</h3>

@@ -19,7 +19,7 @@ export function revealOnScroll(selector: string) {
   },
   {
     duration: 0.8,
-    easing: [0.22, 1, 0.36, 1] 
+    easing: [0.22, 1, 0.36, 1]
   }
 );
 
