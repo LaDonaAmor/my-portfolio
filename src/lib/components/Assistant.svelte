@@ -90,12 +90,13 @@
 
 <section class="grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr]">
 
+  <!-- Left: description -->
   <div class="flex flex-col justify-center">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">AI Portfolio Assistant</p>
-    <h2 class="mt-3 text-3xl font-display font-semibold leading-tight md:text-4xl">
+    <h2 class="mt-3 text-3xl font-semibold leading-tight md:text-4xl">
       Ask anything about<br />Racheal's work.
     </h2>
-    <p class="mt-4 leading-7 font-display text-muted">
+    <p class="mt-4 leading-7 text-muted">
       Scoped strictly to portfolio data  skills, projects, stack, and availability.
     </p>
 
@@ -114,12 +115,14 @@
     </div>
   </div>
 
+  <!-- Right: chat panel -->
   <div class="glass rounded-2xl p-1">
     <div
       class="flex flex-col rounded-xl border border-line bg-[#071525] overflow-hidden"
       style="height: 500px;"
     >
 
+      <!-- Header -->
       <div class="flex items-center justify-between border-b border-line px-4 py-3 shrink-0">
         <div class="flex items-center gap-2">
           <Bot size="15" class="text-accent" />
@@ -140,6 +143,7 @@
         {/if}
       </div>
 
+      <!-- Message log -->
       <div
         bind:this={logEl}
         class="flex-1 overflow-y-auto p-4 space-y-3"
@@ -152,6 +156,7 @@
             Ask about skills, projects, availability, or anything on this portfolio.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
+            <!-- KEY: suggestion string is unique -->
             {#each suggestions as s (s)}
               <button
                 type="button"
@@ -163,6 +168,7 @@
             {/each}
           </div>
         {:else}
+          <!-- KEY: msg.id is a stable unique string, not the object reference -->
           {#each messages as msg (msg.id)}
             <div class="flex {msg.role === 'user' ? 'justify-end' : 'justify-start'}">
               <div
@@ -188,6 +194,7 @@
         {/if}
       </div>
 
+      <!-- Input -->
       <div class="border-t border-line p-4 space-y-2 shrink-0">
         {#if error}
           <p role="alert" class="text-xs text-red-300">{error}</p>

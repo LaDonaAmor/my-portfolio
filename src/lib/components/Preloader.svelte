@@ -18,7 +18,7 @@
       <div class="mx-auto grid size-16 place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent">
         TN
       </div>
-      <p class="mt-4 text-sm font-semibold font-display uppercase tracking-[0.24em] text-accent">Loading Portfolio</p>
+      <p class="mt-4 text-sm font-semibold uppercase tracking-[0.24em] text-accent">Loading Portfolio</p>
     </div>
   </div>
 {/if}
