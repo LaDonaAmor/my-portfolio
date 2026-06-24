@@ -23,12 +23,12 @@
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-6">
     <a href={resolve('/')} class="flex items-center gap-3 font-semibold tracking-tight" onclick={closeMenu}>
       <span
-        class="grid size-9 place-items-center rounded-lg font-display border border-accent/30 bg-accent/12 text-sm text-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+        class="grid size-9 place-items-center rounded-lg border border-accent/30 bg-accent/12 text-sm text-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
         aria-hidden="true"
       >
         TN
       </span>
-      <span class="font-display text-2xl">TechNurse</span>
+      <span>TechNurse</span>
     </a>
 
     <div class="hidden items-center gap-4 text-sm text-muted md:flex">
@@ -36,12 +36,12 @@
         <a class="rounded-md px-3 py-2 transition hover:bg-white/7 hover:text-fg" href={link.href}>{link.label}</a>
       {/each}
 
-      <kbd class="rounded-md border  border-line bg-surface-2 px-2 py-1 text-xs text-muted">Ctrl K</kbd>
+      <kbd class="rounded-md border border-line bg-surface-2 px-2 py-1 text-xs text-muted">Ctrl K</kbd>
       <AccentPicker />
       <ThemeToggle />
     </div>
 
-    <div class="flex items-center cursor-pointer gap-2 md:hidden">
+    <div class="flex items-center gap-2 md:hidden">
       <ThemeToggle />
       <button
         class="grid size-10 place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:border-accent/50 hover:text-fg cursor-pointer"

@@ -60,7 +60,7 @@
   </p>
   <div class="mt-4 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
 
-  <h1 class="reveal font-display mt-6 text-4xl font-semibold md:text-6xl">
+  <h1 class="reveal mt-6 text-4xl font-semibold md:text-6xl">
       I turn product ideas into interfaces people can trust.
   </h1>
     <div class="text-lg leading-8 text-muted">
@@ -78,7 +78,7 @@
 </section>
 
 <section class="py-16">
-  <h2 class="reveal font-display text-2xl font-semibold">Core skills</h2>
+  <h2 class="reveal text-2xl font-semibold">Core skills</h2>
 
   <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
     {#each skills as skill (skill)}
@@ -90,7 +90,7 @@
 </section>
 
 <section class="py-16">
-  <h2 class="reveal font-display text-2xl font-semibold">Experience</h2>
+  <h2 class="reveal text-2xl font-semibold">Experience</h2>
 
   <div class="mt-8 space-y-6">
     {#each timeline as item (item.title)}
