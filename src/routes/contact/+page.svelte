@@ -11,7 +11,7 @@
 
 <section class="grid gap-10 py-12 lg:grid-cols-[0.9fr_1.1fr]">
 	<div>
-		<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">Contact</p>
+		<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">Contact</p>
 		<h1 class="mt-4 font-display text-4xl leading-tight font-semibold md:text-6xl">
 			Let's build something sharp.
 		</h1>

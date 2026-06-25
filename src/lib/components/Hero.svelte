@@ -144,19 +144,17 @@
 	});
 </script>
 
-<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <section
 	class="hero-root relative isolate flex min-h-[95vh] items-center overflow-hidden px-6 pt-16 pb-20 md:px-14 md:pt-20 md:pb-28"
-	on:mousemove={(e) => {
+	onmousemove={(e) => {
 		cursorX = e.clientX;
 		cursorY = e.clientY;
 	}}
-	role="region"
 	aria-label="Hero section"
 >
 	<!-- ── Cursor glow ───────────────────────────────────────── -->
 	<div
-		class="cursor-glow pointer-events-none fixed -z-0 -translate-x-1/2 -translate-y-1/2 rounded-full"
+		class="cursor-glow pointer-events-none fixed z-0 -translate-x-1/2 -translate-y-1/2 rounded-full"
 		style="left:{cursorX}px;top:{cursorY}px;--sz:{ctaHovered ? '140px' : '70px'}"
 	></div>
 
@@ -198,7 +196,7 @@
 
 				<!-- Animated subtitle -->
 				<div class="hl mt-3 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-					{#each subtitleWords as { w, accent }, i}
+					{#each subtitleWords as { w, accent }, i (w)}
 						<span
 							class="sub-word font-display text-xl font-bold md:text-2xl"
 							class:sub-accent={accent}
@@ -208,7 +206,7 @@
 				</div>
 
 				<!-- Description -->
-				<p class="hl mt-5 max-w-[480px] text-sm leading-relaxed text-muted md:text-base">
+				<p class="hl mt-5 max-w-120 text-sm leading-relaxed text-muted md:text-base">
 					I work with
 					<span class="pill">React</span>,
 					<span class="pill">TypeScript</span>,
@@ -223,10 +221,12 @@
 					<a
 						href="{base}/projects"
 						class="btn-primary group inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide"
-						on:mousemove={onMagnetMove}
-						on:mouseleave={onMagnetLeave}
-						on:mouseenter={() => (ctaHovered = true)}
-						on:mouseleave={() => (ctaHovered = false)}
+						onmousemove={onMagnetMove}
+						onmouseenter={() => (ctaHovered = true)}
+						onmouseleave={(e) => {
+							onMagnetLeave(e);
+							ctaHovered = false;
+						}}
 					>
 						Explore Projects
 						<ArrowRight
@@ -238,8 +238,8 @@
 					<a
 						href="{base}/resume.pdf"
 						class="btn-secondary group inline-flex items-center justify-center gap-2 rounded-xl border px-7 py-3.5 text-sm font-bold tracking-wide"
-						on:mousemove={onMagnetMove}
-						on:mouseleave={onMagnetLeave}
+						onmousemove={onMagnetMove}
+						onmouseleave={onMagnetLeave}
 					>
 						<Download
 							size={15}
@@ -251,7 +251,7 @@
 
 				<!-- Social chips -->
 				<div class="hl mt-6 flex flex-wrap gap-2" aria-label="Professional profiles">
-					{#each socials as s}
+					{#each socials as s (s.href)}
 						<a
 							href={s.href}
 							rel="noopener noreferrer"
@@ -269,7 +269,7 @@
 					bind:this={statsRowEl}
 					class="hl stats-row mt-10 grid w-full max-w-md grid-cols-3 gap-5 border-t pt-8"
 				>
-					{#each statVals as val, i}
+					{#each statVals as val, i (i)}
 						<div class="stat-item">
 							<dt class="stat-num font-display text-3xl font-black tabular-nums md:text-4xl">
 								{val}{STAT_SUFFIXES[i]}
@@ -299,7 +299,7 @@
 									class="h-3 w-3 rounded-full bg-emerald-500/75 transition-all hover:bg-emerald-400"
 								></div>
 							</div>
-							<span class="font-mono text-[10px] font-bold tracking-[0.22em] text-accent uppercase">
+							<span class="text-accent font-mono text-[10px] font-bold tracking-[0.22em] uppercase">
 								portfolio.os — v1.0
 							</span>
 							<div class="flex items-center gap-1.5">
@@ -317,7 +317,7 @@
 										Immersive Svelte<br />Product Framework
 									</p>
 								</div>
-								<Sparkles size={17} class="flex-shrink-0 text-accent" />
+								<Sparkles size={17} class="text-accent shrink-0" />
 							</div>
 						</div>
 
@@ -373,7 +373,7 @@
 
 						<!-- Skill tags -->
 						<div class="mt-4 flex flex-wrap gap-2">
-							{#each ['React', 'TypeScript', 'SvelteKit', 'Tailwind', 'A11y', 'Motion'] as sk}
+							{#each ['React', 'TypeScript', 'SvelteKit', 'Tailwind', 'A11y', 'Motion'] as sk (sk)}
 								<span class="s-tag font-mono text-[11px]">{sk}</span>
 							{/each}
 						</div>
