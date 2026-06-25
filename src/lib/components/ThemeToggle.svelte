@@ -5,7 +5,7 @@
 
 <button
 	aria-label="Toggle theme"
-	class="grid size-10 place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:border-accent/50 hover:text-fg"
+	class="hover:border-accent/50 grid size-10 place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:text-fg"
 	onclick={() => theme.update((t) => (t === 'dark' ? 'light' : 'dark'))}
 >
 	{#if $theme === 'dark'}

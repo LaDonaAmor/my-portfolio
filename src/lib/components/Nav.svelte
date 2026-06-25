@@ -27,7 +27,7 @@
 			onclick={closeMenu}
 		>
 			<span
-				class="grid size-9 place-items-center rounded-lg border border-accent/30 bg-accent/12 font-display text-sm text-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+				class="border-accent/30 bg-accent/12 text-accent grid size-9 place-items-center rounded-lg border font-display text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
 				aria-hidden="true"
 			>
 				TN
@@ -52,7 +52,7 @@
 		<div class="flex cursor-pointer items-center gap-2 md:hidden">
 			<ThemeToggle />
 			<button
-				class="grid size-10 cursor-pointer place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:border-accent/50 hover:text-fg"
+				class="hover:border-accent/50 grid size-10 cursor-pointer place-items-center rounded-lg border border-line bg-surface-2 text-muted transition hover:text-fg"
 				aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
 				aria-expanded={open}
 				aria-controls="mobile-navigation"

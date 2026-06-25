@@ -20,11 +20,11 @@
 	>
 		<div class="text-center">
 			<div
-				class="mx-auto grid size-16 place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent"
+				class="border-accent/40 bg-accent/10 text-accent mx-auto grid size-16 place-items-center rounded-2xl border"
 			>
 				TN
 			</div>
-			<p class="mt-4 font-display text-sm font-semibold tracking-[0.24em] text-accent uppercase">
+			<p class="text-accent mt-4 font-display text-sm font-semibold tracking-[0.24em] uppercase">
 				Loading Portfolio
 			</p>
 		</div>

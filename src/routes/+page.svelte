@@ -31,12 +31,12 @@
 <section class="py-12">
 	<div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
 		<div>
-			<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">Selected Work</p>
+			<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">Selected Work</p>
 			<h2 class="mt-3 font-display text-3xl font-semibold md:text-4xl">Recent product builds</h2>
 		</div>
 		<a
 			href={resolve('/projects')}
-			class="inline-flex items-center gap-2 text-sm font-semibold text-accent"
+			class="text-accent inline-flex items-center gap-2 text-sm font-semibold"
 		>
 			View all projects
 			<ArrowRight size="16" />
@@ -62,7 +62,7 @@
 
 <section class="grid gap-6 py-14 lg:grid-cols-[0.82fr_1.18fr]">
 	<div>
-		<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">Quality Bar</p>
+		<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">Quality Bar</p>
 		<h2 class="mt-3 font-display text-3xl font-semibold md:text-4xl">
 			Useful design, disciplined code.
 		</h2>

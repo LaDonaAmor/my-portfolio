@@ -47,7 +47,7 @@
 ></div>
 <div
 	class:active
-	class="cursor-dot pointer-events-none fixed z-30 rounded-full border border-accent/70"
+	class="cursor-dot border-accent/70 pointer-events-none fixed z-30 rounded-full border"
 	aria-hidden="true"
 ></div>
 

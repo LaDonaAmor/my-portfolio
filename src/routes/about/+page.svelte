@@ -53,7 +53,7 @@
 </svelte:head>
 
 <section class="py-12">
-	<p class="reveal text-sm font-semibold tracking-[0.18em] text-accent uppercase">About</p>
+	<p class="reveal text-accent text-sm font-semibold tracking-[0.18em] uppercase">About</p>
 	<div class="mt-4 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
 		<h1 class="reveal mt-6 font-display text-4xl font-semibold md:text-6xl">
 			I turn product ideas into interfaces people can trust.
@@ -92,7 +92,7 @@
 	<div class="mt-8 space-y-6">
 		{#each timeline as item (item.title)}
 			<article class="reveal rounded-xl border border-line bg-surface/70 p-6">
-				<p class="text-sm font-semibold text-accent">{item.year}</p>
+				<p class="text-accent text-sm font-semibold">{item.year}</p>
 				<h3 class="mt-2 text-xl font-semibold">{item.title}</h3>
 				<p class="mt-3 leading-7 text-muted">{item.body}</p>
 			</article>

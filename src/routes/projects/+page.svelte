@@ -45,7 +45,7 @@
 
 <section class="py-12">
 	<div class="mb-8">
-		<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">All Work</p>
+		<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">All Work</p>
 		<h1 class="mt-3 font-display text-3xl font-semibold md:text-4xl">Projects</h1>
 	</div>
 
@@ -55,7 +55,7 @@
 			placeholder="Search projects..."
 			bind:value={search}
 			oninput={resetPage}
-			class="w-full rounded-lg border border-line bg-surface px-4 py-2 text-sm outline-none focus:border-accent sm:max-w-xs"
+			class="focus:border-accent w-full rounded-lg border border-line bg-surface px-4 py-2 text-sm outline-none sm:max-w-xs"
 		/>
 
 		<div class="flex flex-wrap gap-2">
@@ -69,7 +69,7 @@
 					class="rounded-full border px-3 py-1 text-xs font-medium transition
             {selectedLang === lang
 						? 'border-accent bg-accent/10 text-accent'
-						: 'border-line text-muted hover:border-accent/50 hover:text-accent'}"
+						: 'hover:border-accent/50 hover:text-accent border-line text-muted'}"
 				>
 					{lang}
 				</button>
@@ -92,7 +92,7 @@
 			<button
 				type="button"
 				onclick={loadMore}
-				class="rounded-lg border border-line px-6 py-2.5 text-sm font-medium transition hover:border-accent/50 hover:text-accent"
+				class="hover:border-accent/50 hover:text-accent rounded-lg border border-line px-6 py-2.5 text-sm font-medium transition"
 			>
 				Load more ({filtered.length - paginated.length} remaining)
 			</button>

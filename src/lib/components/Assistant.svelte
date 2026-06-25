@@ -99,7 +99,7 @@
 
 <section class="grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr]">
 	<div class="flex flex-col justify-center">
-		<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">
+		<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">
 			AI Portfolio Assistant
 		</p>
 		<h2 class="mt-3 font-display text-3xl leading-tight font-semibold md:text-4xl">
@@ -112,7 +112,7 @@
 		<ul class="mt-6 space-y-2.5 text-sm text-muted">
 			{#each features as feature (feature)}
 				<li class="flex items-center gap-2.5">
-					<span class="size-1.5 shrink-0 rounded-full bg-accent"></span>
+					<span class="bg-accent size-1.5 shrink-0 rounded-full"></span>
 					{feature}
 				</li>
 			{/each}
@@ -132,7 +132,7 @@
 			<div class="flex shrink-0 items-center justify-between border-b border-line px-4 py-3">
 				<div class="flex items-center gap-2">
 					<Bot size="15" class="text-accent" />
-					<span class="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+					<span class="text-accent text-xs font-semibold tracking-[0.18em] uppercase">
 						Portfolio Assistant
 					</span>
 				</div>
@@ -140,7 +140,7 @@
 					<button
 						type="button"
 						onclick={reset}
-						class="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted transition hover:text-accent"
+						class="hover:text-accent flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted transition"
 						aria-label="Reset conversation"
 					>
 						<RotateCcw size="12" />
@@ -165,7 +165,7 @@
 							<button
 								type="button"
 								onclick={() => ask(s)}
-								class="rounded-md border border-line px-3 py-1.5 text-xs text-muted transition hover:border-accent/50 hover:text-accent"
+								class="hover:border-accent/50 hover:text-accent rounded-md border border-line px-3 py-1.5 text-xs text-muted transition"
 							>
 								{s}
 							</button>
@@ -177,7 +177,7 @@
 							<div
 								class="max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-7
                   {msg.role === 'user'
-									? 'rounded-br-sm bg-accent text-ink'
+									? 'bg-accent rounded-br-sm text-ink'
 									: 'rounded-bl-sm bg-surface-2 text-muted'}"
 							>
 								{msg.content}
@@ -191,15 +191,15 @@
 								class="flex items-center gap-1.5 rounded-2xl rounded-bl-sm bg-surface-2 px-4 py-3.5"
 							>
 								<span
-									class="size-1.5 animate-bounce rounded-full bg-accent"
+									class="bg-accent size-1.5 animate-bounce rounded-full"
 									style="animation-delay:0ms"
 								></span>
 								<span
-									class="size-1.5 animate-bounce rounded-full bg-accent"
+									class="bg-accent size-1.5 animate-bounce rounded-full"
 									style="animation-delay:150ms"
 								></span>
 								<span
-									class="size-1.5 animate-bounce rounded-full bg-accent"
+									class="bg-accent size-1.5 animate-bounce rounded-full"
 									style="animation-delay:300ms"
 								></span>
 							</div>
@@ -230,14 +230,14 @@
 						onkeydown={handleKeydown}
 						autocomplete="off"
 						placeholder="Ask a question…"
-						class="flex-1 rounded-lg border border-line bg-surface px-4 py-2.5 text-sm transition
-              outline-none placeholder:text-muted focus:border-accent disabled:opacity-50"
+						class="focus:border-accent flex-1 rounded-lg border border-line bg-surface px-4 py-2.5 text-sm
+              transition outline-none placeholder:text-muted disabled:opacity-50"
 					/>
 					<button
 						type="submit"
 						disabled={loading || !prompt.trim()}
 						aria-label="Send message"
-						class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent
+						class="bg-accent flex size-10 shrink-0 items-center justify-center rounded-lg
               text-ink transition hover:brightness-110 disabled:opacity-40"
 					>
 						<Send size="15" />

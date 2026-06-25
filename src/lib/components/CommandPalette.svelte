@@ -67,7 +67,7 @@
 				{#each filtered as it (it.label)}
 					<li>
 						<button
-							class="w-full rounded-lg px-4 py-3 text-left text-sm transition hover:bg-accent/10 hover:text-accent"
+							class="hover:bg-accent/10 hover:text-accent w-full rounded-lg px-4 py-3 text-left text-sm transition"
 							onclick={() => {
 								open = false;
 								it.run();
