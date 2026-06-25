@@ -1,7 +1,7 @@
 <!-- src/lib/components/DevConsole.svelte -->
 <script lang="ts">
 	import { Terminal, FileCode, Flame, HelpCircle } from 'lucide-svelte';
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 
 	type TerminalLine = {
@@ -107,7 +107,7 @@
 			terminalHistory = [...terminalHistory, createLine('Navigating to /projects...', 'success')];
 
 			setTimeout(() => {
-				goto(`${base}/projects`);
+				goto(resolve('/projects'));
 			}, 600);
 		} else if (cmd === 'stack') {
 			currentTab = 'Stack.json';
@@ -155,7 +155,7 @@
 					<span class="ml-2 font-medium tracking-wide"> TechNurse Window Engine </span>
 				</div>
 
-				<span class="flex items-center gap-1 text-accent/80">
+				<span class="text-accent/80 flex items-center gap-1">
 					<Flame size="12" />
 					Live Kernel
 				</span>
@@ -175,7 +175,7 @@
 						}`}
 					>
 						{#if currentTab === filename}
-							<div class="absolute inset-x-0 top-0 h-0.5 bg-accent"></div>
+							<div class="bg-accent absolute inset-x-0 top-0 h-0.5"></div>
 						{/if}
 
 						<FileCode size="13" class={currentTab === filename ? 'text-accent' : 'text-muted/40'} />
@@ -193,6 +193,7 @@
 						</span>
 
 						<p class="tracking-wide text-muted/90">
+							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 							{@html line.text}
 						</p>
 					</div>
@@ -202,7 +203,7 @@
 					<span class="w-5 pt-0.5 text-right text-[11px] text-muted/30 select-none">
 						{files[currentTab].length + 1}
 					</span>
-					<span class="mt-0.75 h-4 w-1.5 bg-accent/60"></span>
+					<span class="bg-accent/60 mt-0.75 h-4 w-1.5"></span>
 				</div>
 			</div>
 
@@ -233,7 +234,7 @@
 				</div>
 
 				<div class="relative flex items-center gap-2 border-t border-line/50 pt-2">
-					<span class="font-bold text-accent select-none">➜</span>
+					<span class="text-accent font-bold select-none">➜</span>
 					<span class="font-medium text-blue-600 select-none dark:text-sky-500"> ~ </span>
 
 					<input
@@ -244,7 +245,7 @@
 								executeCommand();
 							}
 						}}
-						class="m-0 flex-1 border-none bg-transparent p-0 font-medium text-fg caret-accent outline-none focus:ring-0"
+						class="caret-accent m-0 flex-1 border-none bg-transparent p-0 font-medium text-fg outline-none focus:ring-0"
 						placeholder="Type 'help' or 'projects'..."
 						spellcheck="false"
 						autocomplete="off"
@@ -256,7 +257,7 @@
 							commandInput = 'help';
 							executeCommand();
 						}}
-						class="cursor-pointer rounded p-1 text-muted/40 transition duration-150 hover:text-accent"
+						class="hover:text-accent cursor-pointer rounded p-1 text-muted/40 transition duration-150"
 						title="Show Help"
 					>
 						<HelpCircle size="14" />

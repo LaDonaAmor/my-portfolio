@@ -1,20 +1,45 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let className: string = '';
-	export let quantity: number = 100;
-	export let staticity: number = 50;
-	export let ease: number = 50;
-	export let size: number = 0.4;
-	export let refresh: boolean = true;
-	export let color: string = '#ffffff';
-	export let vx: number = 0;
-	export let vy: number = 0;
+	interface Circle {
+		x: number;
+		y: number;
+		translateX: number;
+		translateY: number;
+		size: number;
+		alpha: number;
+		targetAlpha: number;
+		dx: number;
+		dy: number;
+		magnetism: number;
+	}
+
+	let {
+		className = '',
+		quantity = 100,
+		staticity = 50,
+		ease = 50,
+		size = 0.4,
+		refresh = true,
+		color = '#ffffff',
+		vx = 0,
+		vy = 0
+	}: {
+		className?: string;
+		quantity?: number;
+		staticity?: number;
+		ease?: number;
+		size?: number;
+		refresh?: boolean;
+		color?: string;
+		vx?: number;
+		vy?: number;
+	} = $props();
 
 	let canvasRef: HTMLCanvasElement;
 	let canvasContainerRef: HTMLDivElement;
 	let context: CanvasRenderingContext2D | null = null;
-	let circles: any[] = [];
+	let circles: Circle[] = [];
 	let mouse = { x: 0, y: 0 };
 	let canvasSize = { w: 0, h: 0 };
 	const dpr = typeof window !== 'undefined' ? window.devicePixelRatio : 1;
@@ -36,9 +61,9 @@
 		return [red, green, blue];
 	}
 
-	const rgb = hexToRgb(color);
+	const rgb = $derived(hexToRgb(color));
 
-	function circleParams() {
+	function circleParams(): Circle {
 		const x = Math.floor(Math.random() * canvasSize.w);
 		const y = Math.floor(Math.random() * canvasSize.h);
 		const translateX = 0;
@@ -82,7 +107,7 @@
 		}
 	}
 
-	function drawCircle(circle, update = false) {
+	function drawCircle(circle: Circle, update = false) {
 		if (context) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
 			context.translate(translateX, translateY);
@@ -106,7 +131,13 @@
 		}
 	}
 
-	function remapValue(value, start1, end1, start2, end2) {
+	function remapValue(
+		value: number,
+		start1: number,
+		end1: number,
+		start2: number,
+		end2: number
+	): number {
 		let remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
 		return remapped > 0 ? remapped : 0;
 	}
@@ -180,13 +211,11 @@
 		};
 	});
 
-	$: {
-		if (canvasRef) {
+	$effect(() => {
+		if (refresh && canvasRef) {
 			drawParticles();
-			//   animate();
 		}
-	}
-	//   Building Stage
+	});
 </script>
 
 <div class={className} bind:this={canvasContainerRef} aria-hidden="true">

@@ -2,15 +2,6 @@
 	import { accent } from '$lib/stores/theme';
 
 	const accents = ['#38bdf8', '#60a5fa', '#22d3ee', '#fb7185', '#a78bfa'];
-
-	// reactive rune
-	$effect(() => {
-		const value = $accent;
-
-		if (typeof document !== 'undefined') {
-			document.documentElement.style.setProperty('--color-accent', value);
-		}
-	});
 </script>
 
 <div class="flex items-center gap-2" aria-label="Choose accent color">

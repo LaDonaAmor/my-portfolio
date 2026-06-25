@@ -37,7 +37,7 @@
 
 <article
 	id={slug}
-	class="project-card group overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300 hover:border-accent/50"
+	class="project-card group hover:border-accent/50 overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300"
 	style="animation-delay: {index * 80}ms"
 >
 	<div class="project-shot relative block w-full overflow-hidden border-b border-line bg-[#081526]">
@@ -66,7 +66,7 @@
 
 	<div class="p-5">
 		<div class="flex items-center justify-between gap-3">
-			<p class="text-xs font-semibold tracking-[0.16em] text-accent uppercase">{impact}</p>
+			<p class="text-accent text-xs font-semibold tracking-[0.16em] uppercase">{impact}</p>
 			<span class="rounded-full border border-line px-2.5 py-1 text-xs text-muted">{category}</span>
 		</div>
 		<h3 class="mt-2 text-xl font-semibold">{title}</h3>
@@ -82,21 +82,19 @@
 
 		<div class="mt-6 flex flex-wrap gap-3 text-sm font-medium">
 			<a
-				// eslint-disable-next-line svelte/no-navigation-without-resolve
 				href={resolveLink(demo)}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition hover:border-accent/50 hover:text-accent"
+				class="hover:border-accent/50 hover:text-accent inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition"
 			>
 				Live Demo
 				<ArrowUpRight size="15" />
 			</a>
 			<a
-				// eslint-disable-next-line svelte/no-navigation-without-resolve
 				href={resolveLink(repo)}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition hover:border-accent/50 hover:text-accent"
+				class="hover:border-accent/50 hover:text-accent inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition"
 			>
 				<Code2 size="15" />
 				GitHub Repo

@@ -6,7 +6,6 @@
 	--color-surface: #16120d;
 	--color-surface-2: #211a12;
 	--color-fg: #f2ede6;
-	--color-accent: var(--color-accent);
 	--color-accent-2: color-mix(in srgb, var(--color-accent), black 25%);
 	--color-ink: #0e0b08;
 	--color-muted: #8a7d6b;
