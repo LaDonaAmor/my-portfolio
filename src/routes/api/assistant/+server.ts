@@ -14,49 +14,51 @@ Key facts:
 - Contact: rachealogunmodede6@gmail.com | github.com/LaDonaAmor`;
 
 export const POST: RequestHandler = async ({ request }) => {
-const apiKey = env.GROQ_API_KEY;
+	const apiKey = env.GROQ_API_KEY;
 
-  if (!apiKey) {
-    console.error('GROQ_API_KEY is missing');
-    return json({ error: 'API key not configured.' }, { status: 500 });
-  }
+	if (!apiKey) {
+		console.error('GROQ_API_KEY is missing');
+		return json({ error: 'API key not configured.' }, { status: 500 });
+	}
 
-  try {
-    const { messages } = await request.json();
+	try {
+		const { messages } = await request.json();
 
-    if (!Array.isArray(messages) || messages.length === 0) {
-      return json({ error: 'Invalid messages payload.' }, { status: 400 });
-    }
+		if (!Array.isArray(messages) || messages.length === 0) {
+			return json({ error: 'Invalid messages payload.' }, { status: 400 });
+		}
 
-   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}`
-  },
-  body: JSON.stringify({
-    model: 'llama-3.1-8b-instant', // free and fast
-    max_tokens: 300,
-    messages: [
-      { role: 'system', content: SYSTEM_PROMPT },
-      ...messages
-    ]
-  })
-});
+		const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${apiKey}`
+			},
+			body: JSON.stringify({
+				model: 'llama-3.1-8b-instant', // free and fast
+				max_tokens: 300,
+				messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages]
+			})
+		});
 
-    if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
-      console.error('OpenAI API error:', res.status, JSON.stringify(body));
-      return json({ error: body?.error?.message ?? `API error (${res.status})` }, { status: res.status });
-    }
+		if (!res.ok) {
+			const body = await res.json().catch(() => ({}));
+			console.error('OpenAI API error:', res.status, JSON.stringify(body));
+			return json(
+				{ error: body?.error?.message ?? `API error (${res.status})` },
+				{ status: res.status }
+			);
+		}
 
-    const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content ?? 'No response received.';
+		const data = await res.json();
+		const reply = data.choices?.[0]?.message?.content ?? 'No response received.';
 
-    return json({ reply });
-
-  } catch (err) {
-    console.error('Assistant route error:', err instanceof Error ? err.message : err);
-    return json({ error: err instanceof Error ? err.message : 'Server error. Please try again.' }, { status: 500 });
-  }
+		return json({ reply });
+	} catch (err) {
+		console.error('Assistant route error:', err instanceof Error ? err.message : err);
+		return json(
+			{ error: err instanceof Error ? err.message : 'Server error. Please try again.' },
+			{ status: 500 }
+		);
+	}
 };
