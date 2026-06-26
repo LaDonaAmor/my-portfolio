@@ -49,7 +49,7 @@
 		name="description"
 		content="About TechNurse, a SvelteKit developer focused on product-quality web interfaces."
 	/>
-	<link rel="icon" href="/favicon.svg" />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <section class="py-12">

@@ -6,7 +6,7 @@
 <svelte:head>
 	<title>Contact | TechNurse</title>
 	<meta name="description" content="Contact TechNurse for frontend, and product UI work." />
-	<link rel="icon" href="/favicon.svg" />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <section class="grid gap-10 py-12 lg:grid-cols-[0.9fr_1.1fr]">

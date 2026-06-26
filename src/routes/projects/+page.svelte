@@ -40,7 +40,7 @@
 <svelte:head>
 	<title>Projects | TechNurse</title>
 	<meta name="description" content="All GitHub projects by TechNurse." />
-	<link rel="icon" href="/favicon.svg" />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <section class="py-12">
