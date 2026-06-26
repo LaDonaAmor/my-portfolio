@@ -217,7 +217,9 @@
 					Interactivity Console Shell
 				</div>
 
-				<div class="mb-2 flex flex-1 scrollbar-none flex-col gap-1 overflow-y-auto pr-1 text-left">
+				<div
+					class="mb-2 flex flex-1 scrollbar-none flex-col gap-1 overflow-y-auto pr-1 text-left [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+				>
 					{#each terminalHistory as line (line.id)}
 						<p
 							class={`leading-normal whitespace-pre-wrap ${
@@ -267,14 +269,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	:global(.scrollbar-none::-webkit-scrollbar) {
-		display: none;
-	}
-
-	:global(.scrollbar-none) {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
-</style>

@@ -219,12 +219,5 @@
 </script>
 
 <div class={className} bind:this={canvasContainerRef} aria-hidden="true">
-	<canvas bind:this={canvasRef} class="size-full"></canvas>
+	<canvas bind:this={canvasRef} class="h-full w-full"></canvas>
 </div>
-
-<style>
-	.size-full {
-		width: 100%;
-		height: 100%;
-	}
-</style>

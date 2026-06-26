@@ -36,7 +36,9 @@
 		</div>
 	</div>
 
-	<div class="glass rounded-2xl p-5 md:p-6">
+	<div
+		class="rounded-2xl border border-line bg-surface/70 p-5 shadow-[0_18px_50px_rgba(2,8,23,0.18)] backdrop-blur-xl md:p-6"
+	>
 		<ContactForm />
 	</div>
 </section>

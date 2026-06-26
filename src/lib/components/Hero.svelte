@@ -153,21 +153,35 @@
 	aria-label="Hero section"
 >
 	<!-- ── Cursor glow ───────────────────────────────────────── -->
+	<!--
+		.cursor-glow maps to: pointer-events-none fixed z-0 -translate-x-1/2 -translate-y-1/2 rounded-full
+		width/height driven by --sz CSS var; radial-gradient and transition kept in style attr / <style>
+	-->
 	<div
-		class="cursor-glow pointer-events-none fixed z-0 -translate-x-1/2 -translate-y-1/2 rounded-full"
+		class="cursor-glow pointer-events-none fixed z-0 -translate-x-1/2 -translate-y-1/2 rounded-full transition-[width,height] duration-300"
 		style="left:{cursorX}px;top:{cursorY}px;--sz:{ctaHovered ? '140px' : '70px'}"
 	></div>
 
 	<!-- ── Ambient orbs ──────────────────────────────────────── -->
-	<div class="orb orb-a pointer-events-none absolute -z-10"></div>
-	<div class="orb orb-b pointer-events-none absolute -z-10"></div>
-	<div class="orb orb-c pointer-events-none absolute -z-10"></div>
+	<!-- orb base: rounded-full blur-[90px] opacity-[0.16] absolute -z-10 pointer-events-none -->
+	<!-- orb-a/b/c: sizes, positions, colours, and keyframe animations stay in <style> -->
+	<div
+		class="orb orb-a pointer-events-none absolute -z-10 rounded-full opacity-[0.16] blur-[90px]"
+	></div>
+	<div
+		class="orb orb-b pointer-events-none absolute -z-10 rounded-full opacity-[0.16] blur-[90px]"
+	></div>
+	<div
+		class="orb orb-c pointer-events-none absolute -z-10 rounded-full opacity-[0.16] blur-[90px]"
+	></div>
 
 	<!-- ── Subtle grid ───────────────────────────────────────── -->
+	<!-- .grid-veil: complex background-image + mask-image — stays in <style> -->
 	<div class="grid-veil pointer-events-none absolute inset-0 -z-10"></div>
 
 	<!-- ── Grain overlay ─────────────────────────────────────── -->
-	<div class="grain pointer-events-none absolute inset-0 -z-10"></div>
+	<!-- .grain: SVG data-URI background + opacity-[0.03] — background stays in <style>, opacity in Tailwind -->
+	<div class="grain pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"></div>
 
 	<Particles className="absolute inset-0 -z-10 pointer-events-none" refresh={true} />
 
@@ -177,9 +191,17 @@
 			<!-- ── LEFT: Content ─────────────────────────────── -->
 			<div class="flex flex-col items-start">
 				<!-- Role badge -->
+				<!--
+					.badge → border border-[color-mix(in_srgb,var(--color-accent)_35%,transparent)]
+					         bg-[color-mix(in_srgb,var(--color-accent)_7%,transparent)]
+					         text-accent backdrop-blur-sm
+					.pulse-dot → inline-block size-1.5 rounded-full bg-accent motion-safe:animate-pulse
+					(dotPulse keyframe kept in <style> for the scale tweak; animate-pulse is close enough
+					 but to be pixel-exact the keyframe stays)
+				-->
 				<div class="hl mb-5">
 					<span
-						class="badge inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-bold tracking-[0.24em] uppercase"
+						class="badge inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-bold tracking-[0.24em] uppercase backdrop-blur-sm"
 					>
 						<span class="pulse-dot" aria-hidden="true"></span>
 						<ShieldCheck size={12} strokeWidth={2.5} />
@@ -191,10 +213,23 @@
 				<h1
 					class="hl font-display text-5xl leading-[1.02] font-black tracking-tight md:text-[4.5rem]"
 				>
-					<span class="name-grad" bind:this={nameEl}>{FINAL_NAME}</span>
+					<!--
+						.name-grad → bg-clip-text text-transparent + gradient in <style>
+						Tailwind bg-clip-text + text-transparent cover the clipping;
+						the gradient itself (color-mix) must stay in <style>
+					-->
+					<span class="name-grad bg-clip-text text-transparent" bind:this={nameEl}
+						>{FINAL_NAME}</span
+					>
 				</h1>
 
 				<!-- Animated subtitle -->
+				<!--
+					.sub-word  → opacity-0 translate-y-[14px] + wordIn animation in <style>
+					             font is already on parent; colour = text-muted
+					.sub-accent → text-accent
+					wordIn keyframe must stay in <style>
+				-->
 				<div class="hl mt-3 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
 					{#each subtitleWords as { w, accent }, i (w)}
 						<span
@@ -206,6 +241,12 @@
 				</div>
 
 				<!-- Description -->
+				<!--
+					.pill → inline font-mono text-[0.82em] font-bold text-accent
+					        bg-[color-mix(...)] border border-[color-mix(...)] px-[0.42em] py-[0.1em] rounded-[5px]
+					Using Tailwind arbitrary values where color-mix isn't needed and <style> for color-mix ones.
+					The simpler approach: keep .pill in <style> since all its colours use color-mix.
+				-->
 				<p class="hl mt-5 max-w-120 text-sm leading-relaxed text-muted md:text-base">
 					I work with
 					<span class="pill">React</span>,
@@ -217,6 +258,12 @@
 				</p>
 
 				<!-- CTA row -->
+				<!--
+					.btn-primary  → bg-accent text-ink font-bold tracking-wide rounded-xl px-7 py-3.5 text-sm
+					                + box-shadow and hover effects (color-mix) stay in <style>
+					.btn-secondary → border rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide
+					                 + color-mix border/bg colours stay in <style>
+				-->
 				<div class="hl mt-8 flex flex-col gap-3 sm:flex-row">
 					<a
 						href="{base}/projects"
@@ -237,7 +284,7 @@
 					</a>
 					<a
 						href="{base}/resume.pdf"
-						class="btn-secondary group inline-flex items-center justify-center gap-2 rounded-xl border px-7 py-3.5 text-sm font-bold tracking-wide"
+						class="btn-secondary group inline-flex items-center justify-center gap-2 rounded-xl border px-7 py-3.5 text-sm font-bold tracking-wide transition"
 						onmousemove={onMagnetMove}
 						onmouseleave={onMagnetLeave}
 					>
@@ -250,13 +297,20 @@
 				</div>
 
 				<!-- Social chips -->
+				<!--
+					.chip → border border-[--color-line] text-muted
+					        bg-[color-mix(in_srgb,var(--color-surface)_45%,transparent)]
+					        hover:border-[color-mix(...)] hover:text-accent hover:bg-[color-mix(...)]
+					        hover:-translate-y-0.5
+					Base layout/spacing are Tailwind; color-mix colours stay in <style>
+				-->
 				<div class="hl mt-6 flex flex-wrap gap-2" aria-label="Professional profiles">
 					{#each socials as s (s.href)}
 						<a
 							href={s.href}
 							rel="noopener noreferrer"
 							target="_blank"
-							class="chip inline-flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-xs font-semibold transition-all duration-200"
+							class="chip inline-flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5"
 						>
 							<svelte:component this={s.icon} size={12} />
 							{s.label}
@@ -265,6 +319,12 @@
 				</div>
 
 				<!-- Stats -->
+				<!--
+					.stats-row → border-t grid grid-cols-3 gap-5 pt-8
+					             border-color uses color-mix → stays in <style>
+					.stat-num  → font-display text-3xl font-black tabular-nums md:text-4xl text-[--color-fg]
+					             hover colour change via <style> (.stat-item:hover .stat-num)
+				-->
 				<dl
 					bind:this={statsRowEl}
 					class="hl stats-row mt-10 grid w-full max-w-md grid-cols-3 gap-5 border-t pt-8"
@@ -283,9 +343,18 @@
 			</div>
 
 			<!-- ── RIGHT: Console card ───────────────────────── -->
+			<!--
+				.console-wrap → consoleFloat keyframe animation stays in <style>
+				                max-width/position/relative handled by grid
+				.console-card → border bg in <style> (color-mix)
+				.console-body → bg backdrop-blur-xl in <style> (color-mix bg)
+				.c-block      → bg border in <style> (color-mix)
+				.c-label      → flex items-center gap-1 font-mono text-[10px] font-bold
+				                tracking-[0.2em] uppercase text-muted
+			-->
 			<div class="hl console-wrap relative">
 				<div class="console-card rounded-2xl border p-px">
-					<div class="console-body rounded-[14px] p-5 md:p-6">
+					<div class="console-body rounded-[14px] p-5 backdrop-blur-xl md:p-6">
 						<!-- Titlebar -->
 						<div class="mb-5 flex items-center justify-between">
 							<div class="flex gap-1.5" aria-hidden="true">
@@ -336,7 +405,10 @@
 						<!-- Live metrics -->
 						<div class="c-block rounded-xl p-4">
 							<div class="mb-3.5 flex items-center justify-between">
-								<span class="c-label flex items-center gap-1.5">
+								<!--
+									.c-label used here with an icon child — flex items-center gap-1.5
+								-->
+								<span class="c-label gap-1.5">
 									<Activity size={11} aria-hidden="true" />
 									System Metrics
 								</span>
@@ -349,6 +421,10 @@
 										<span class="text-muted uppercase">Render Engine</span>
 										<span class="font-semibold text-fg">{renderPct}%</span>
 									</div>
+									<!--
+										metric bar track: h-1.5 w-full overflow-hidden rounded-full
+										bg-[--color-surface] → bg-surface (Tailwind token if configured)
+									-->
 									<div class="h-1.5 w-full overflow-hidden rounded-full bg-surface">
 										<div
 											class="metric-a h-full rounded-full transition-all duration-700 ease-out"
@@ -372,6 +448,10 @@
 						</div>
 
 						<!-- Skill tags -->
+						<!--
+							.s-tag → font-mono text-[11px] px-[10px] py-[3px] rounded-[6px]
+							         border/bg/color all use color-mix → stay in <style>
+						-->
 						<div class="mt-4 flex flex-wrap gap-2">
 							{#each ['React', 'TypeScript', 'SvelteKit', 'Tailwind', 'A11y', 'Motion'] as sk (sk)}
 								<span class="s-tag font-mono text-[11px]">{sk}</span>
@@ -381,6 +461,8 @@
 				</div>
 
 				<!-- Card ambient glow -->
+				<!-- .card-glow → pointer-events-none absolute inset-0 -z-10 rounded-2xl blur-3xl
+				                  radial-gradient (color-mix) stays in <style> -->
 				<div
 					class="card-glow pointer-events-none absolute inset-0 -z-10 rounded-2xl blur-3xl"
 				></div>
@@ -390,7 +472,13 @@
 </section>
 
 <style>
-	/* ── Cursor glow ─────────────────────────────────────────────── */
+	/* ─────────────────────────────────────────────────────────────
+	   Only styles that CANNOT be expressed as Tailwind utilities
+	   remain here: keyframe animations, color-mix() values,
+	   and multi-property computed rules.
+	   ───────────────────────────────────────────────────────────── */
+
+	/* ── Cursor glow (radial-gradient uses color-mix) ─────────── */
 	.cursor-glow {
 		width: var(--sz, 70px);
 		height: var(--sz, 70px);
@@ -399,18 +487,9 @@
 			color-mix(in srgb, var(--color-accent) 22%, transparent) 0%,
 			transparent 70%
 		);
-		transition:
-			width 0.3s ease,
-			height 0.3s ease;
-		pointer-events: none;
 	}
 
-	/* ── Ambient orbs ────────────────────────────────────────────── */
-	.orb {
-		border-radius: 50%;
-		filter: blur(90px);
-		opacity: 0.16;
-	}
+	/* ── Ambient orbs (sizes, positions, colours, keyframes) ───── */
 	.orb-a {
 		width: 520px;
 		height: 520px;
@@ -466,12 +545,14 @@
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.orb {
+		.orb-a,
+		.orb-b,
+		.orb-c {
 			animation: none;
 		}
 	}
 
-	/* ── Grid veil ───────────────────────────────────────────────── */
+	/* ── Grid veil (complex background-image + mask-image) ──────── */
 	.grid-veil {
 		background-image:
 			linear-gradient(color-mix(in srgb, var(--color-accent) 4%, transparent) 1px, transparent 1px),
@@ -484,20 +565,20 @@
 		mask-image: radial-gradient(ellipse 65% 65% at 50% 45%, black 40%, transparent);
 	}
 
-	/* ── Grain ───────────────────────────────────────────────────── */
+	/* ── Grain (SVG data-URI background) ───────────────────────── */
 	.grain {
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 		background-size: 220px 220px;
-		opacity: 0.03;
 	}
 
-	/* ── Role badge ──────────────────────────────────────────────── */
+	/* ── Role badge (color-mix border + bg) ─────────────────────── */
 	.badge {
-		border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+		border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
 		background: color-mix(in srgb, var(--color-accent) 7%, transparent);
 		color: var(--color-accent);
-		backdrop-filter: blur(8px);
 	}
+
+	/* ── Pulse dot (scale tweak beyond Tailwind's animate-pulse) ── */
 	.pulse-dot {
 		display: inline-block;
 		width: 6px;
@@ -517,8 +598,13 @@
 			transform: scale(0.75);
 		}
 	}
+	@media (prefers-reduced-motion: reduce) {
+		.pulse-dot {
+			animation: none;
+		}
+	}
 
-	/* ── Name gradient ───────────────────────────────────────────── */
+	/* ── Name gradient (color-mix gradient + clip) ──────────────── */
 	.name-grad {
 		background: linear-gradient(
 			130deg,
@@ -530,7 +616,7 @@
 		background-clip: text;
 	}
 
-	/* ── Subtitle words ──────────────────────────────────────────── */
+	/* ── Subtitle word entrance animation ───────────────────────── */
 	.sub-word {
 		color: var(--color-muted);
 		opacity: 0;
@@ -554,7 +640,7 @@
 		}
 	}
 
-	/* ── Inline tech pills ───────────────────────────────────────── */
+	/* ── Inline tech pills (all colours use color-mix) ──────────── */
 	.pill {
 		display: inline;
 		font-family: monospace;
@@ -567,7 +653,7 @@
 		border-radius: 5px;
 	}
 
-	/* ── Buttons ─────────────────────────────────────────────────── */
+	/* ── Primary CTA button (color-mix box-shadow) ──────────────── */
 	.btn-primary {
 		background: var(--color-accent);
 		color: var(--color-ink, #000);
@@ -584,6 +670,8 @@
 			0 0 55px color-mix(in srgb, var(--color-accent) 55%, transparent),
 			0 8px 28px color-mix(in srgb, var(--color-accent) 35%, transparent);
 	}
+
+	/* ── Secondary CTA button (color-mix border + bg) ───────────── */
 	.btn-secondary {
 		border-color: color-mix(in srgb, var(--color-accent) 28%, var(--color-line, #333));
 		color: var(--color-fg);
@@ -598,7 +686,7 @@
 		background: color-mix(in srgb, var(--color-accent) 9%, var(--color-surface));
 	}
 
-	/* ── Social chips ────────────────────────────────────────────── */
+	/* ── Social chips (color-mix bg + hover colours) ─────────────── */
 	.chip {
 		border-color: var(--color-line, #333);
 		color: var(--color-muted);
@@ -608,10 +696,9 @@
 		border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
 		color: var(--color-accent);
 		background: color-mix(in srgb, var(--color-accent) 9%, transparent);
-		transform: translateY(-2px);
 	}
 
-	/* ── Stats ───────────────────────────────────────────────────── */
+	/* ── Stats row (color-mix border) ───────────────────────────── */
 	.stats-row {
 		border-color: color-mix(in srgb, var(--color-line, #333) 55%, transparent);
 	}
@@ -623,7 +710,7 @@
 		transition: color 0.3s ease;
 	}
 
-	/* ── Console card ────────────────────────────────────────────── */
+	/* ── Console card float animation ───────────────────────────── */
 	.console-wrap {
 		animation: consoleFloat 8s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
 	}
@@ -641,19 +728,23 @@
 			animation: none;
 			transform: none;
 		}
-		.orb {
+		.orb-a,
+		.orb-b,
+		.orb-c {
 			display: none;
 		}
 	}
 
+	/* ── Console card border + bg (color-mix) ───────────────────── */
 	.console-card {
 		border-color: color-mix(in srgb, var(--color-accent) 28%, var(--color-line, #333));
 		background: color-mix(in srgb, var(--color-surface) 70%, transparent);
 	}
 	.console-body {
 		background: color-mix(in srgb, var(--color-surface-2, #111) 82%, transparent);
-		backdrop-filter: blur(16px);
 	}
+
+	/* ── Console inner blocks ────────────────────────────────────── */
 	.c-block {
 		background: color-mix(in srgb, var(--color-surface) 55%, transparent);
 		border: 1px solid color-mix(in srgb, var(--color-line, #333) 70%, transparent);
@@ -670,7 +761,7 @@
 		color: var(--color-muted);
 	}
 
-	/* Live metric bars */
+	/* ── Live metric bars ────────────────────────────────────────── */
 	.metric-a {
 		background: var(--color-accent);
 	}
@@ -678,7 +769,7 @@
 		background: color-mix(in srgb, var(--color-accent) 55%, #a78bfa);
 	}
 
-	/* Skill tags */
+	/* ── Skill tags (color-mix border + bg) ─────────────────────── */
 	.s-tag {
 		padding: 3px 10px;
 		border-radius: 6px;
@@ -687,7 +778,7 @@
 		color: var(--color-accent);
 	}
 
-	/* Card glow */
+	/* ── Card ambient glow (color-mix radial-gradient) ───────────── */
 	.card-glow {
 		background: radial-gradient(
 			ellipse at center,

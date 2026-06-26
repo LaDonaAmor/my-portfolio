@@ -124,9 +124,11 @@
 		</div>
 	</div>
 
-	<div class="glass rounded-2xl p-1">
+	<div
+		class="rounded-2xl border border-line bg-surface/70 p-1 shadow-[0_18px_50px_rgba(2,8,23,0.18)] backdrop-blur-xl"
+	>
 		<div
-			class="flex flex-col overflow-hidden rounded-xl border border-line bg-[#071525]"
+			class="flex flex-col overflow-hidden rounded-xl border border-line bg-surface/5"
 			style="height: 500px;"
 		>
 			<div class="flex shrink-0 items-center justify-between border-b border-line px-4 py-3">

@@ -29,7 +29,6 @@
 	let imageLoaded = $state(false);
 	let imageError = $state(false);
 
-	// Only prepend base for local paths
 	const resolveAsset = (path: string) => (path.startsWith('http') ? path : `${base}${path}`);
 
 	const resolveLink = (path: string) => (path.startsWith('http') ? path : `${base}${path}`);
@@ -37,10 +36,12 @@
 
 <article
 	id={slug}
-	class="project-card group hover:border-accent/50 overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300"
+	class="group hover:border-accent/50 overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300 transform-3d motion-safe:animate-[fadeUp_0.6s_ease_backwards] motion-safe:hover:transform-[perspective(1100px)_rotateX(1.8deg)_rotateY(-2.2deg)_translateY(-4px)] motion-reduce:animate-none motion-reduce:hover:transform-none"
 	style="animation-delay: {index * 80}ms"
 >
-	<div class="project-shot relative block w-full overflow-hidden border-b border-line bg-[#081526]">
+	<div
+		class="relative block aspect-[1.58] w-full overflow-hidden border-b border-line bg-[#081526]"
+	>
 		{#if !imageLoaded && !imageError}
 			<span class="absolute inset-0 grid place-items-center text-sm text-muted">
 				Loading preview...
@@ -102,38 +103,3 @@
 		</div>
 	</div>
 </article>
-
-<style>
-	.project-card {
-		transform-style: preserve-3d;
-		animation: fadeUp 0.6s ease backwards;
-	}
-
-	.project-card:hover {
-		transform: perspective(1100px) rotateX(1.8deg) rotateY(-2.2deg) translateY(-4px);
-	}
-
-	.project-shot {
-		aspect-ratio: 1.58;
-	}
-
-	@keyframes fadeUp {
-		from {
-			opacity: 0;
-			transform: translateY(16px);
-		}
-		to {
-			opacity: 1;
-			transform: none;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.project-card {
-			animation: none;
-		}
-		.project-card:hover {
-			transform: none;
-		}
-	}
-</style>

@@ -41,56 +41,13 @@
 </script>
 
 <div
-	class:active
-	class="cursor-field pointer-events-none fixed inset-0 z-30"
+	class:opacity-100={active}
+	class="pointer-events-none fixed inset-0 z-30 opacity-0 mix-blend-screen transition-opacity duration-180 [background:radial-gradient(260px_circle_at_var(--cursor-x,-20rem)_var(--cursor-y,-20rem),color-mix(in_oklab,var(--color-accent)_16%,transparent),transparent_66%),radial-gradient(72px_circle_at_var(--cursor-x,-20rem)_var(--cursor-y,-20rem),color-mix(in_oklab,var(--color-accent)_14%,transparent),transparent_62%)] motion-reduce:hidden max-[0px]:hidden"
 	aria-hidden="true"
 ></div>
+
 <div
-	class:active
-	class="cursor-dot border-accent/70 pointer-events-none fixed z-30 rounded-full border"
+	class:opacity-100={active}
+	class="border-accent/70 pointer-events-none fixed top-[calc(var(--cursor-y,-20rem)-9px)] left-[calc(var(--cursor-x,-20rem)-9px)] z-30 size-4.5 transform-[translateZ(0)] rounded-full border opacity-0 [box-shadow:0_0_22px_color-mix(in_oklab,var(--color-accent)_70%,transparent)] transition-opacity duration-180 motion-reduce:hidden"
 	aria-hidden="true"
 ></div>
-
-<style>
-	.cursor-field {
-		opacity: 0;
-		background:
-			radial-gradient(
-				260px circle at var(--cursor-x, -20rem) var(--cursor-y, -20rem),
-				color-mix(in oklab, var(--color-accent) 16%, transparent),
-				transparent 66%
-			),
-			radial-gradient(
-				72px circle at var(--cursor-x, -20rem) var(--cursor-y, -20rem),
-				color-mix(in oklab, var(--color-accent) 14%, transparent),
-				transparent 62%
-			);
-		mix-blend-mode: screen;
-		transition: opacity 180ms ease;
-	}
-
-	.cursor-dot {
-		left: calc(var(--cursor-x, -20rem) - 9px);
-		top: calc(var(--cursor-y, -20rem) - 9px);
-		width: 18px;
-		height: 18px;
-		opacity: 0;
-		transform: translateZ(0);
-		box-shadow: 0 0 22px color-mix(in oklab, var(--color-accent) 70%, transparent);
-		transition:
-			opacity 180ms ease,
-			width 180ms ease,
-			height 180ms ease;
-	}
-
-	.active {
-		opacity: 1;
-	}
-
-	@media (pointer: coarse), (prefers-reduced-motion: reduce) {
-		.cursor-field,
-		.cursor-dot {
-			display: none;
-		}
-	}
-</style>
