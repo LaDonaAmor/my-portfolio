@@ -10,8 +10,11 @@ export type GitHubRepo = {
 };
 
 function getLiveScreenshot(repo: GitHubRepo): string {
-	const target = repo.homepage || repo.html_url;
-	return `https://api.microlink.io/?url=${encodeURIComponent(target)}&screenshot=true&meta=false&embed=screenshot.url`;
+	
+
+	 const url = repo.homepage || repo.html_url;
+ return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+ 
 }
 
 export async function getGitHubProjects() {

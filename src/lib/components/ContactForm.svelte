@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { Send } from 'lucide-svelte';
 
+	const FORMSPREE_URL = 'https://formspree.io/f/mykqwnow';
+
 	let name = $state('');
 	let email = $state('');
 	let message = $state('');
 	let sent = $state(false);
 	let error = $state('');
+	let loading = $state(false);
 
 	function sanitize(value: string, max: number) {
 		return value
@@ -14,7 +17,7 @@
 			.slice(0, max);
 	}
 
-	function submit(event: SubmitEvent) {
+	async function submit(event: SubmitEvent) {
 		event.preventDefault();
 		error = '';
 
@@ -35,18 +38,31 @@
 			return;
 		}
 
-		const mailto =
-			`mailto:rachealogunmodede6@gmail.com` +
-			`?subject=${encodeURIComponent('Portfolio enquiry from ' + cleanName)}` +
-			`&body=${encodeURIComponent(cleanMessage + '\n\n— ' + cleanName + ' (' + cleanEmail + ')')}`;
+		loading = true;
 
-		// Open in a new tab so Outlook Web (or any web client) doesn't
-		// replace your portfolio page. Also avoids the blank-tab flicker
-		// that location.href causes when the OS hands it to a native client.
-		window.open(mailto, '_blank');
+		try {
+			const res = await fetch(FORMSPREE_URL, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+				body: JSON.stringify({
+					name: cleanName,
+					email: cleanEmail,
+					message: cleanMessage,
+					_subject: `Portfolio enquiry from ${cleanName}`
+				})
+			});
 
-		// Give the user honest feedback — we can't know if they actually sent it
-		sent = true;
+			if (!res.ok) throw new Error('Failed to send');
+
+			sent = true;
+			name = '';
+			email = '';
+			message = '';
+		} catch {
+			error = 'Could not send. Email me directly at rachealogunmodede6@gmail.com';
+		} finally {
+			loading = false;
+		}
 	}
 </script>
 
@@ -57,7 +73,8 @@
 			bind:value={name}
 			required
 			maxlength="100"
-			class="focus:border-accent rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50"
+			disabled={loading}
+			class="focus:border-accent rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 disabled:opacity-60"
 			placeholder="Your name"
 		/>
 	</label>
@@ -69,7 +86,8 @@
 			bind:value={email}
 			required
 			maxlength="255"
-			class="focus:border-accent rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50"
+			disabled={loading}
+			class="focus:border-accent rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 disabled:opacity-60"
 			placeholder="you@example.com"
 		/>
 	</label>
@@ -81,7 +99,8 @@
 			required
 			maxlength="1000"
 			rows="5"
-			class="focus:border-accent resize-y rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50"
+			disabled={loading}
+			class="focus:border-accent resize-y rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 disabled:opacity-60"
 			placeholder="Tell me what you're building."
 		></textarea>
 	</label>
@@ -97,18 +116,16 @@
 
 	{#if sent}
 		<p class="border-accent/30 bg-accent/10 text-accent rounded-lg border px-3 py-2 text-sm">
-			Your mail client should have opened. If nothing happened, email me directly at
-			<a href="mailto:rachealogunmodede6@gmail.com" class="underline underline-offset-2">
-				rachealogunmodede6@gmail.com
-			</a>
+			Thanks! Your message has been sent. I'll get back to you soon.
 		</p>
 	{/if}
 
 	<button
 		type="submit"
-		class="bg-accent inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold text-ink transition hover:brightness-110 active:scale-[0.97]"
+		disabled={loading}
+		class="bg-accent text-accent inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold transition hover:brightness-110 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
 	>
-		Send Message
+		{loading ? 'Sending...' : 'Send Message'}
 		<Send size="17" />
 	</button>
 </form>

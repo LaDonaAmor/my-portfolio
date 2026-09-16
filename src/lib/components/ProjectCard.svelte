@@ -36,7 +36,7 @@
 
 <article
 	id={slug}
-	class="group hover:border-accent/50 overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300 transform-3d motion-safe:animate-[fadeUp_0.6s_ease_backwards] motion-safe:hover:transform-[perspective(1100px)_rotateX(1.8deg)_rotateY(-2.2deg)_translateY(-4px)] motion-reduce:animate-none motion-reduce:hover:transform-none"
+	class="group hover:border-accent/50 overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300 transform-3d motion-safe:animate-fade-up motion-safe:hover:transform-[perspective(1100px)_rotateX(1.8deg)_rotateY(-2.2deg)_translateY(-4px)] motion-reduce:animate-none motion-reduce:hover:transform-none"
 	style="animation-delay: {index * 80}ms"
 >
 	<div
@@ -48,9 +48,11 @@
 			</span>
 		{/if}
 		{#if imageError}
-			<span class="absolute inset-0 grid place-items-center p-4 text-sm text-muted">
-				Preview unavailable
-			</span>
+			<div
+				class="absolute inset-0 grid place-items-center bg-linear-to-br from-surface to-surface-2 p-4"
+			>
+				<p class="text-center font-display text-lg font-semibold text-muted">{title}</p>
+			</div>
 		{/if}
 		<img
 			src={resolveAsset(screenshot)}
