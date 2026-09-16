@@ -10,6 +10,8 @@
 	let search = $state('');
 	let selectedLang = $state('All');
 
+	let showArchived = $state(false);
+
 	const languages = $derived([
 		'All',
 		...new Set(data.projects.map((p) => p.impact || 'Unknown').filter(Boolean))
@@ -21,7 +23,8 @@
 			const matchesSearch =
 				p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
 			const matchesLang = selectedLang === 'All' || (p.impact || 'Unknown') === selectedLang;
-			return matchesSearch && matchesLang;
+			const matchesArchived = showArchived || !p.archived; // ← ADD THIS
+			return matchesSearch && matchesLang && matchesArchived;
 		})
 	);
 
@@ -74,6 +77,20 @@
 					{lang}
 				</button>
 			{/each}
+
+			<button
+				type="button"
+				onclick={() => {
+					showArchived = !showArchived;
+					resetPage();
+				}}
+				class="rounded-full border px-3 py-1 text-xs font-medium transition
+		{showArchived
+					? 'border-accent bg-accent/10 text-accent'
+					: 'hover:border-accent/50 hover:text-accent border-line text-muted'}"
+			>
+				{showArchived ? 'Hide Archived' : 'Archived'}
+			</button>
 		</div>
 	</div>
 

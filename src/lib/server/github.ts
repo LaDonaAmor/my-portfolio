@@ -7,14 +7,12 @@ export type GitHubRepo = {
 	topics: string[];
 	language: string | null;
 	fork: boolean;
+	archived: boolean;
 };
 
 function getLiveScreenshot(repo: GitHubRepo): string {
-	
-
-	 const url = repo.homepage || repo.html_url;
- return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
- 
+	const url = repo.homepage || repo.html_url;
+	return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
 }
 
 export async function getGitHubProjects() {
@@ -34,6 +32,7 @@ export async function getGitHubProjects() {
 			tech: repo.topics?.length ? repo.topics : ['code'],
 			screenshot: getLiveScreenshot(repo),
 			demo: repo.homepage ?? repo.html_url,
-			repo: repo.html_url
+			repo: repo.html_url,
+			archived: repo.archived
 		}));
 }

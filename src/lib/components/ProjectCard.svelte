@@ -12,7 +12,8 @@
 		screenshot,
 		demo,
 		repo,
-		index = 0
+		index = 0,
+		archived = false
 	}: {
 		slug: string;
 		title: string;
@@ -24,6 +25,7 @@
 		demo: string;
 		repo: string;
 		index?: number;
+		archived?: boolean;
 	} = $props();
 
 	let imageLoaded = $state(false);
@@ -72,6 +74,11 @@
 			<p class="text-accent text-xs font-semibold tracking-[0.16em] uppercase">{impact}</p>
 			<span class="rounded-full border border-line px-2.5 py-1 text-xs text-muted">{category}</span>
 		</div>
+
+		{#if archived}
+			<span class="rounded-full bg-amber-500/10 px-2 py-1 text-xs text-amber-500">Archived</span>
+		{/if}
+
 		<h3 class="mt-2 text-xl font-semibold">{title}</h3>
 		<p class="mt-3 text-sm leading-6 text-muted">{desc}</p>
 
