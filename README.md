@@ -1,4 +1,4 @@
-# TechNurse Interactive Portfolio
+# Racheal Ogunmodede Interactive Portfolio
 
 An immersive SvelteKit developer portfolio built to feel engineered, animated, responsive, and production-ready. It includes a cinematic hero, animated background, particle system, cursor interaction, 3D project showcase, interactive terminal, local AI-style assistant, command palette, fake IDE preview, animated timeline, theme persistence, and custom accent colors.
 

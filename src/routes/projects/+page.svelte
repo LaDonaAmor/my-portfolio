@@ -41,8 +41,8 @@
 </script>
 
 <svelte:head>
-	<title>Projects | TechNurse</title>
-	<meta name="description" content="All GitHub projects by TechNurse." />
+	<title>Projects | Racheal Ogunmodede</title>
+	<meta name="description" content="All GitHub projects by Racheal Ogunmodede." />
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 

@@ -19,7 +19,7 @@
 </script>
 
 <svelte:head>
-	<title>TechNurse | Svelte Developer Portfolio</title>
+	<title>Racheal Ogunmodede | Frontend Developer Portfolio</title>
 	<meta
 		name="description"
 		content="A production-ready interactive SvelteKit portfolio with polished motion, project screenshots, terminal, assistant, and responsive UI."

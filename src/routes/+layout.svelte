@@ -20,6 +20,6 @@
 <footer
 	class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-10 font-display text-sm text-muted md:flex-row md:items-center md:justify-between md:px-6"
 >
-	<p>(c) {new Date().getFullYear()} TechNurse. Built with SvelteKit.</p>
+	<p>(c) {new Date().getFullYear()} Racheal Ogunmodede. Built with SvelteKit.</p>
 	<p class="text-fg">Available for focused frontend and product UI work.</p>
 </footer>

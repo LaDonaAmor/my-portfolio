@@ -4,8 +4,11 @@
 </script>
 
 <svelte:head>
-	<title>Contact | TechNurse</title>
-	<meta name="description" content="Contact TechNurse for frontend, and product UI work." />
+	<title>Contact | Racheal Ogunmodede</title>
+	<meta
+		name="description"
+		content="Contact Racheal Ogunmodede for frontend, and product UI work."
+	/>
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 

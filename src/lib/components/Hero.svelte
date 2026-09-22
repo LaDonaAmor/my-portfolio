@@ -25,7 +25,7 @@
 
 	// ── Name scramble ────────────────────────────────────────────────
 	const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%';
-	const FINAL_NAME = "Hi, I'm Racheal,";
+	const FINAL_NAME = "Hi, I'm Racheal Ogunmodede.";
 	let nameEl: HTMLElement | null = null;
 
 	function scramble(el: HTMLElement, text: string, ms = 900) {

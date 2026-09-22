@@ -44,10 +44,10 @@
 </script>
 
 <svelte:head>
-	<title>About | TechNurse</title>
+	<title>About | Racheal Ogunmodede</title>
 	<meta
 		name="description"
-		content="About TechNurse, a SvelteKit developer focused on product-quality web interfaces."
+		content="About Racheal Ogunmodede, a Frontend developer focused on product-quality web interfaces."
 	/>
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
