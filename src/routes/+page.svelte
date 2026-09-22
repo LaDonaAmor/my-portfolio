@@ -32,7 +32,13 @@
 	<div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
 		<div>
 			<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">Selected Work</p>
-			<h2 class="mt-3 font-display text-3xl font-semibold md:text-4xl">Recent product builds</h2>
+			<h1 class="mt-3 font-display text-3xl font-semibold md:text-4xl">
+				Projects with product intent
+			</h1>
+			<p class="mt-4 max-w-2xl leading-7 text-muted">
+				A focused selection of frontend work demonstrating responsive UI design, component
+				architecture, and thoughtful user flows.
+			</p>
 		</div>
 		<a
 			href={resolve('/projects')}

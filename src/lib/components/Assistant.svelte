@@ -120,7 +120,7 @@
 
 		<div class="mt-8 flex items-center gap-2 text-xs text-muted/60">
 			<Sparkles size="13" class="text-accent" />
-			Powered by Grok
+			AI-assisted responses based on verified portfolio details
 		</div>
 	</div>
 

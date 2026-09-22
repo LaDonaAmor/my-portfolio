@@ -57,27 +57,9 @@
 		{ w: 'experiences.', accent: false }
 	];
 
-	// ── Stats count-up ───────────────────────────────────────────────
-	const STAT_TARGETS = [3, 100, 98];
-	const STAT_SUFFIXES = ['+', '%', ''];
-	const STAT_LABELS = ['Featured Builds', 'Responsive', 'A11y Score'];
-	let statVals = [0, 0, 0];
-	let statsStarted = false;
-
-	function easeOut(t: number) {
-		return 1 - Math.pow(1 - t, 3);
-	}
-
-	function countUp(i: number, target: number, dur = 1400) {
-		const t0 = performance.now();
-		const tick = (now: number) => {
-			const p = Math.min((now - t0) / dur, 1);
-			statVals[i] = Math.round(easeOut(p) * target);
-			statVals = [...statVals];
-			if (p < 1) requestAnimationFrame(tick);
-		};
-		requestAnimationFrame(tick);
-	}
+	// ── Hero stats ───────────────────────────────────────────────────
+	const STAT_VALUES = ['3+', 'Keyboard-first', 'Mobile-ready'];
+	const STAT_LABELS = ['Selected projects', 'Accessibility approach', 'Responsive design'];
 
 	// ── Console live metrics ─────────────────────────────────────────
 	let renderPct = 82;
@@ -96,9 +78,6 @@
 		btn.style.transform = '';
 		setTimeout(() => (btn.style.transition = ''), 450);
 	}
-
-	let statsRowEl: HTMLElement | null = null;
-	let statsObs: IntersectionObserver;
 
 	onMount(() => {
 		// Scramble name after short delay
@@ -122,25 +101,10 @@
 			renderPct = 62 + Math.floor(Math.random() * 32);
 			cachePct = 50 + Math.floor(Math.random() * 38);
 		}, 2400);
-
-		// Count-up stats when visible
-		if (statsRowEl) {
-			statsObs = new IntersectionObserver(
-				(entries) => {
-					if (entries[0].isIntersecting && !statsStarted) {
-						statsStarted = true;
-						STAT_TARGETS.forEach((t, i) => countUp(i, t, 1500));
-					}
-				},
-				{ threshold: 0.6 }
-			);
-			statsObs.observe(statsRowEl);
-		}
 	});
 
 	onDestroy(() => {
 		clearInterval(metricsTimer);
-		statsObs?.disconnect();
 	});
 </script>
 
@@ -319,21 +283,11 @@
 				</div>
 
 				<!-- Stats -->
-				<!--
-					.stats-row → border-t grid grid-cols-3 gap-5 pt-8
-					             border-color uses color-mix → stays in <style>
-					.stat-num  → font-display text-3xl font-black tabular-nums md:text-4xl text-[--color-fg]
-					             hover colour change via <style> (.stat-item:hover .stat-num)
-				-->
-				<dl
-					bind:this={statsRowEl}
-					class="hl stats-row mt-10 grid w-full max-w-md grid-cols-3 gap-5 border-t pt-8"
-				>
-					{#each statVals as val, i (i)}
+
+				<dl class="hl stats-row mt-8 grid w-full max-w-md grid-cols-3 gap-4 border-t pt-6">
+					{#each STAT_VALUES as value, i (i)}
 						<div class="stat-item">
-							<dt class="stat-num font-display text-3xl font-black tabular-nums md:text-4xl">
-								{val}{STAT_SUFFIXES[i]}
-							</dt>
+							<dt class="stat-num font-display text-2xl font-black md:text-3xl">{value}</dt>
 							<dd class="mt-1 text-[10px] font-bold tracking-[0.2em] text-muted uppercase">
 								{STAT_LABELS[i]}
 							</dd>
