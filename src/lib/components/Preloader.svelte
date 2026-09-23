@@ -14,49 +14,23 @@
 
 {#if visible}
 	<div
-		class="preloader fixed inset-0 z-80 grid place-items-center bg-bg"
+		class="fixed inset-0 z-80 grid place-items-center bg-bg"
 		aria-live="polite"
 		aria-label="Loading portfolio"
+		aria-hidden="true"
 	>
-		<div class="text-center">
+		<div
+			class="motion-safe:animate-loader-pulse text-center motion-reduce:animate-none"
+			aria-hidden="true"
+		>
 			<div
-				class="border-accent/40 bg-accent/10 text-accent mx-auto grid size-16 place-items-center rounded-2xl border"
+				class="mx-auto grid size-16 place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent"
 			>
 				TN
 			</div>
-			<p class="text-accent mt-4 font-display text-sm font-semibold tracking-[0.24em] uppercase">
+			<p class="mt-4 font-display text-sm font-semibold tracking-[0.24em] text-accent uppercase">
 				Loading Portfolio
 			</p>
 		</div>
 	</div>
 {/if}
-
-<style>
-	.preloader {
-		animation: loaderOut 720ms ease 520ms both;
-	}
-
-	.preloader > div {
-		animation: loaderPulse 900ms ease-in-out infinite alternate;
-	}
-
-	@keyframes loaderPulse {
-		to {
-			transform: translateY(-4px) scale(1.02);
-		}
-	}
-
-	@keyframes loaderOut {
-		to {
-			opacity: 0;
-			visibility: hidden;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.preloader,
-		.preloader > div {
-			animation: none;
-		}
-	}
-</style>
