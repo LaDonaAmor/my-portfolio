@@ -1,42 +1,66 @@
 <script lang="ts">
-	import { Mail, MapPin, Timer } from 'lucide-svelte';
+	import { CheckCircle2, Mail, MapPin } from 'lucide-svelte';
 	import ContactForm from '$lib/components/ContactForm.svelte';
 </script>
 
 <svelte:head>
-	<title>Contact | TechNurse</title>
-	<meta name="description" content="Contact TechNurse for frontend, and product UI work." />
-	<link rel="icon" href="/favicon.svg" />
+	<title>Contact | Racheal Ogunmodede</title>
+	<meta
+		name="description"
+		content="Contact Racheal Ogunmodede about frontend development, product UI, and accessible interface work."
+	/>
 </svelte:head>
 
-<section class="grid gap-10 py-12 lg:grid-cols-[0.9fr_1.1fr]">
+<section class="grid gap-12 pt-8 pb-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch lg:pt-12">
 	<div>
-		<p class="text-accent text-sm font-semibold tracking-[0.18em] uppercase">Contact</p>
-		<h1 class="mt-4 font-display text-4xl leading-tight font-semibold md:text-6xl">
-			Let's build something sharp.
+		<p class="eyebrow">Contact</p>
+		<h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">
+			Let’s make something useful.
 		</h1>
-		<p class="mt-5 max-w-xl text-lg leading-8 text-muted">
-			Send a focused message about your product, team, or feature. The form validates the basics and
-			opens your mail client when ready.
+
+		<p class="mt-6 max-w-xl text-lg leading-8 text-muted">
+			Tell me a little about what you’re building, the part you’d like help with, and any timing you
+			already have in mind. If you’re still figuring it out, that’s fine too.
 		</p>
 
-		<div class="mt-8 grid gap-3 text-sm">
-			<p class="flex items-center gap-3 rounded-lg border border-line bg-surface/78 p-4">
-				<Mail size="18" class="text-accent" />
+		<div class="paper-card mt-6 p-6">
+			<h2 class="font-display text-2xl">Good things to include</h2>
+
+			<ul class="mt-3 space-y-1 text-sm leading-6 text-muted">
+				<li class="flex gap-3">
+					<CheckCircle2 size={18} class="mt-0.5 shrink-0 text-accent" />
+					What the product or team does.
+				</li>
+				<li class="flex gap-3">
+					<CheckCircle2 size={18} class="mt-0.5 shrink-0 text-accent" />
+					What kind of frontend or product UI help you need.
+				</li>
+				<li class="flex gap-3">
+					<CheckCircle2 size={18} class="mt-0.5 shrink-0 text-accent" />
+					A rough timeline, if you have one.
+				</li>
+			</ul>
+		</div>
+
+		<div class="mt-4 grid gap-3 text-sm">
+			<a
+				href="mailto:rachealogunmodede6@gmail.com"
+				class="flex min-h-11 items-center gap-3 rounded-xl border border-line bg-surface px-4 transition hover:border-accent/50 hover:text-accent"
+			>
+				<Mail size={18} class="text-accent" />
 				rachealogunmodede6@gmail.com
-			</p>
-			<p class="flex items-center gap-3 rounded-lg border border-line bg-surface/78 p-4">
-				<MapPin size="18" class="text-accent" />
+			</a>
+
+			<p
+				class="flex min-h-11 items-center gap-3 rounded-xl border border-line bg-surface px-4 text-muted"
+			>
+				<MapPin size={18} class="text-accent" />
 				Remote-first
-			</p>
-			<p class="flex items-center gap-3 rounded-lg border border-line bg-surface/78 p-4">
-				<Timer size="18" class="text-accent" />
-				Replies within 1-2 business days
 			</p>
 		</div>
 	</div>
 
-	<div class="glass rounded-2xl p-5 md:p-6">
+	<div class="paper-card h-fit p-5 sm:p-7">
 		<ContactForm />
 	</div>
 </section>

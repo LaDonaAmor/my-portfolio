@@ -1,176 +1,231 @@
-# TechNurse Interactive Portfolio
+# Racheal Ogunmodede — Frontend Portfolio
 
-An immersive SvelteKit developer portfolio built to feel engineered, animated, responsive, and production-ready. It includes a cinematic hero, animated background, particle system, cursor interaction, 3D project showcase, interactive terminal, local AI-style assistant, command palette, fake IDE preview, animated timeline, theme persistence, and custom accent colors.
+A personal frontend developer portfolio for Racheal Ogunmodede, also known as **TechNurse**. The site presents selected work, professional background, skills, contact options, and an AI-powered portfolio assistant.
 
-## Setup
+Built with SvelteKit, TypeScript, Tailwind CSS, and Motion.
 
-```bash
-npm install
-npm run dev
+## Features
+
+- Responsive portfolio layout for desktop, tablet, and mobile
+- Interactive hero section with:
+  - Animated introduction
+  - Floating interactive console card
+  - Profile and stack tabs
+  - Terminal-style commands for navigating the site
+- GitHub-powered project listings
+- Featured projects selected using the `featured` GitHub repository topic
+- Project search, technology filtering, and archived-project visibility
+- AI portfolio assistant powered by Groq
+- Contact form powered by Formspree
+- Light, dark, and system theme preferences
+- Configurable accent colors
+- Command palette with `Ctrl + K` or `Cmd + K`
+- Keyboard-accessible navigation and visible focus states
+- Reduced-motion support for motion-heavy interactions
+
+## Tech Stack
+
+- [SvelteKit](https://kit.svelte.dev/)
+- [Svelte 5](https://svelte.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Motion](https://motion.dev/)
+- [Lucide Icons](https://lucide.dev/)
+- [Groq](https://groq.com/) for the portfolio assistant
+- [Formspree](https://formspree.io/) for contact form submissions
+
+## Project Structure
+
+```text
+src/
+├── lib/
+│   ├── animations/
+│   │   └── scrollReveal.ts         # Scroll-based motion helpers
+│   ├── components/
+│   │   ├── AccentPicker.svelte     # Accent color selector
+│   │   ├── Assistant.svelte        # Portfolio assistant interface
+│   │   ├── CommandPalette.svelte   # Keyboard navigation palette
+│   │   ├── ContactForm.svelte      # Formspree contact form
+│   │   ├── Hero.svelte             # Interactive floating hero console
+│   │   ├── Nav.svelte              # Responsive site navigation
+│   │   ├── ProjectCard.svelte      # Reusable project card
+│   │   └── ThemeToggle.svelte      # System, light, and dark theme control
+│   ├── server/
+│   │   └── github.ts               # GitHub repository data loader
+│   └── stores/
+│       └── theme.ts                # Theme and accent persistence
+├── routes/
+│   ├── +layout.svelte              # Shared page shell
+│   ├── +page.svelte                # Homepage
+│   ├── about/+page.svelte          # About page
+│   ├── contact/+page.svelte        # Contact page
+│   ├── projects/+page.svelte       # Project index
+│   └── api/assistant/+server.ts    # Groq assistant API route
+└── app.css                          # Global design tokens and styles
+
+static/
+├── resume.pdf
+└── favicon and web manifest assets
 ```
 
-Production checks:
+## Prerequisites
+
+- Node.js 20 or newer
+- pnpm recommended, because this repository includes a `pnpm-lock.yaml`
+- A Groq API key for the AI assistant
+
+## Getting Started
+
+Clone the repository:
 
 ```bash
-npm run check
-npm run build
-npm run preview
+git clone https://github.com/LaDonaAmor/your-repository-name.git
+cd your-repository-name
 ```
 
-## Architecture
+Install dependencies:
 
-- `src/routes/+layout.svelte` wires global UI: navigation, preloader, animated background, cursor field, command palette, and page shell.
-- `src/routes/+page.svelte` composes the homepage narrative: hero, project grid, 3D showcase, terminal, assistant, IDE preview, timeline, and quality section.
-- `src/routes/projects/+page.svelte` provides dynamic project filtering with category tabs and technology filters.
-- `src/lib/data/projects.ts` keeps project metadata centralized so cards and showcase stay in sync.
-- `src/lib/components/*` contains reusable UI pieces for animation, navigation, cards, assistant, terminal, timeline, and theme controls.
+```bash
+pnpm install
+```
 
-## Animation Decisions
+Create a `.env` file in the project root:
 
-Animations are intentional and lightweight:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
 
-- Hero content uses staggered entrance animation.
-- Background particles and shader-like gradients are CSS-based to avoid heavy WebGL cost.
-- Project cards use transform-only 3D hover states.
-- The 3D showcase uses perspective and transform instead of an expensive canvas scene.
-- Page reveal, modal entry, preloader, timeline, and cursor effects are short and consistent.
-- `prefers-reduced-motion` disables or minimizes motion-heavy effects.
+Start the development server:
 
-## Performance Optimization
+```bash
+pnpm dev
+```
 
-- Project screenshots are optimized SVG assets in `static/projects`.
-- Images use `loading="lazy"`, `decoding="async"`, and fixed dimensions.
-- Routes are naturally split by SvelteKit.
-- No remote tracking, analytics, third-party AI calls, or exposed API keys.
-- Interactions are local, avoiding network latency and external integration risk.
-- Animations are mostly opacity and transform for smooth rendering.
+Open the local URL shown in your terminal, usually:
 
-## Accessibility Considerations
+```text
+http://localhost:5173
+```
 
-- Navigation is keyboard-accessible and includes a mobile menu.
-- Focus states are visible across interactive controls.
-- Project modals use `role="dialog"` and `aria-modal`.
-- Terminal and assistant fields have labels and sanitized input.
-- Theme and accent controls have accessible labels.
-- Content hierarchy uses clear headings, sections, and descriptive link text.
+## Available Scripts
 
-## Security And Stability
+```bash
+# Start the development server
+pnpm dev
 
-- Terminal and assistant sanitize input and never execute shell commands.
-- Contact form sanitizes values before creating the mailto URL.
-- No secrets are stored in the repository.
-- Project links use internal paths to avoid broken placeholder URLs while remaining easy to replace.
-- Image loading and error states are handled in project cards.
+# Run Svelte and TypeScript checks
+pnpm check
 
-## Trade-Offs
+# Run checks continuously
+pnpm check:watch
 
-- The portfolio uses CSS-based 3D and shader-like effects instead of Three.js to keep bundle size and Lighthouse performance stronger.
-- The AI assistant is local and rules-based, not connected to an external model, so there are no exposed API keys or data transmission risks.
-- Project screenshots are SVG placeholders with final paths ready for replacement.
+# Check formatting and linting
+pnpm lint
 
----
+# Format project files
+pnpm format
 
-## License
+# Create a production build
+pnpm build
 
-Built for the HNGi14 internship Task.
+# Preview the production build locally
+pnpm preview
+```
+
+## Environment Variables
+
+| Variable       | Required               | Description                                          |
+| -------------- | ---------------------- | ---------------------------------------------------- |
+| `GROQ_API_KEY` | Yes, for the assistant | API key used by the server-side Groq assistant route |
+
+Do not expose `GROQ_API_KEY` in client-side code, commit it to Git, or prefix it with `PUBLIC_`.
+
+## Project Data
+
+Projects are loaded from the public GitHub profile:
+
+```text
+https://github.com/LaDonaAmor
+```
+
+The homepage shows repositories that:
+
+- Are not forks
+- Are not archived
+- Include the GitHub topic `featured`
+
+To feature a repository on the homepage, add this topic in GitHub:
+
+```text
+featured
+```
+
+The project index displays non-fork repositories and supports search, filtering, and archived-project visibility.
+
+## External Services
+
+This project uses the following third-party services:
+
+| Service    | Purpose                                                            |
+| ---------- | ------------------------------------------------------------------ |
+| GitHub API | Fetches public repository information                              |
+| Microlink  | Generates project preview screenshots from repository or demo URLs |
+| Groq API   | Generates portfolio assistant responses                            |
+| Formspree  | Receives contact form submissions                                  |
+
+If any service is unavailable, the relevant feature may not load or may show an error state.
+
+## AI Assistant
+
+The portfolio assistant is intentionally restricted to verified portfolio information, including:
+
+- Racheal’s frontend focus and technical stack
+- Availability and contact information
+- Current featured GitHub projects
+
+The assistant uses Groq’s `openai/gpt-oss-20b` model through the server route at:
+
+```text
+/api/assistant
+```
+
+It should not be treated as a source of information beyond the portfolio data provided to it.
+
+## Accessibility
+
+The portfolio includes:
+
+- Semantic page structure and heading hierarchy
+- Keyboard-accessible interactive controls
+- Visible focus indicators
+- Labeled form and search inputs
+- Accessible theme, accent, and filter controls
+- Mobile-friendly control sizes
+- Reduced-motion support using `prefers-reduced-motion`
+- Live regions for assistant, terminal, form, and status feedback
+
+## Deployment
+
+The project currently uses `@sveltejs/adapter-auto`.
+
+Before deploying, run:
+
+```bash
+pnpm check
+pnpm build
+```
+
+Set `GROQ_API_KEY` in your deployment provider’s environment-variable settings. Do not place the key in a public frontend environment variable.
 
 ## Author
 
-Racheal I. Ogunmodede (TechNurse)
+**Racheal Ogunmodede**  
+Frontend Developer · TechNurse
 
-Markdown
+- GitHub: [@LaDonaAmor](https://github.com/LaDonaAmor)
+- LinkedIn: [rachealogunmodede](https://www.linkedin.com/in/rachealogunmodede/)
+- Email: [rachealogunmodede6@gmail.com](mailto:rachealogunmodede6@gmail.com)
 
-# TechNurse Interactive Portfolio
+## License
 
-An immersive, high-end editorial developer portfolio built with a brutalist-minimalist design aesthetic. This workspace is engineered for strict performance profiles, zero-jank transitions, and clear semantic structural layouts.
-
-Featuring an asymmetrical typographic layout, a dedicated architectural developer console sandbox, and fully native interactive layout nodes.
-
----
-
-## 🛠️ Tech Stack & Design System
-
-- **Framework Core:** SvelteKit (TypeScript)
-- **Style Engine:** Tailwind CSS v4 (Using modern raw `@theme` CSS specifications)
-- **Motion Framework:** Motion One (`motion`) for native Web Animations API performance
-- **Visual Elements:** Lucide Svelte for structural system indicators
-
----
-
-## 🏗️ Project Architecture
-
-```text
-├── src/
-│   ├── lib/
-│   │   ├── animations/
-│   │   │   └── scrollReveal.ts      # Custom viewport element entry configurations
-│   │   ├── components/
-│   │   │   ├── AccentPicker.svelte  # Runtime layout tint mutator
-│   │   │   ├── Assistant.svelte     # Rule-based local prompt sandbox
-│   │   │   ├── CommandPalette.svelte# System global navigation modal
-│   │   │   ├── ContactForm.svelte   # Sanitized structural mailto link builder
-│   │   │   ├── CursorField.svelte   # Native micro-interaction event listener
-│   │   │   ├── DevConsole.svelte    # DEDICATED SANDBOX WORKSPACE SECTION
-│   │   │   ├── Hero.svelte          # Editorial typographic branding block
-│   │   │   ├── Nav.svelte           # Accessible responsive header navigation
-│   │   │   ├── Particles.svelte     # Lightweight canvas simulation
-│   │   │   ├── Preloader.svelte     # Initial system state layout loader
-│   │   │   ├── ProjectCard.svelte   # Geometric perspective showcase component
-│   │   │   └── ThemeToggle.svelte   # Persistent state switcher
-│   │   ├── server/
-│   │   │   └── github.ts            # Server-side repository fetch subsystem
-│   │   └── stores/
-│   │       └── theme.ts             # Global layout state context management
-│   ├── app.css                      # Editorial slate-monochrome framework configuration
-│   ├── app.html                     # Root semantic document frame
-│   └── routes/
-│       ├── +layout.svelte           # Shell wrapper orchestrating core utilities
-│       ├── +page.svelte             # Sequential home narrative composition
-│       └── projects/
-│           └── +page.svelte         # Dynamic metadata tabular grid interface
-├── static/                          # Production assets and media declarations
-├── svelte.config.js                 # Unified framework adapter configurations
-└── vite.config.ts                   # Fast module compilation manager
-⚡ Setup & Development
-Initialize environment and dependencies:
-
-Bash
-npm install
-Boot local development environment with hot module replacement:
-
-Bash
-npm run dev
-Production Validation Pipeline
-Always verify compilation integrity before running deployments:
-
-Bash
-# Verify component typing and template validity
-npm run check
-
-# Build optimized client bundles and routing tables
-npm run build
-
-# Local evaluation of production production-ready build output
-npm run preview
-📐 Key Engineering Decisions
-1. Visual Isolation Strategy
-Following high-end editorial aesthetics, the portfolio rejects legacy soft blurred background blobs and complex layout fills. Instead, components sit directly on an explicit, hard geometric linear background grid (.editorial-canvas) utilizing clean structural lines, dark monochrome interfaces, and sharp technical shadows (.brutalist-shadow).
-
-2. Dedicated DevConsole Workspace
-The DevConsole component is decoupled from the Hero section and exists as an independent, full-width workspace node. This ensures the landing interface remains lightweight and content-focused, while providing a clear desktop-style sandbox context below it.
-
-3. Lightweight Interaction Framework
-No WebGL/Three.js overhead: Flat CSS transforms, perspective matrix fields, and lightweight particle arrays handle deep spatial interaction without hitting GPU thresholds.
-
-Hardware Acceleration: Layout animations rely entirely on composite properties (transform, opacity) via Motion One to skip layout/paint passes.
-
-Accessibility First: Focus rings are structurally mapped to matching component accents; modal dialog targets implement explicit ARIA boundaries (role="dialog", aria-modal), and keyboard navigation handles all shell input seamlessly.
-
-4. Zero-Trust Sandbox Isolation
-The integrated Bash terminal core strictly intercepts all buffer inputs locally. Commands like projects, stack, and clear perform direct UI/route manipulation via rules-based evaluations, bypassing any internal string interpolation vulnerabilities.
-
-⚖️ Trade-offs and Constraints
-Local Rule-Based Sandbox Assistant: To enforce strict client data privacy and eliminate runtime latency or broken external dependencies, the assistant works entirely off pre-configured matching keywords rather than remote LLM calls.
-
-Vector Media Optimization: Built-in project thumbnails leverage scalable vector asset formats inside /static, maintaining crisp resolution and near-zero byte costs across retina screens.
-```
+No license has been declared for this repository. All rights are reserved unless a license is added.

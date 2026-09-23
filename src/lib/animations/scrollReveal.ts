@@ -10,8 +10,10 @@ export function revealOnScroll(selector: string) {
 			entries.forEach((entry) => {
 				if (!entry.isIntersecting) return;
 
+				const target = entry.target as HTMLElement;
+
 				animate(
-					entry.target,
+					target,
 					{
 						opacity: [0, 1],
 						y: [32, 0],
@@ -19,7 +21,7 @@ export function revealOnScroll(selector: string) {
 					},
 					{
 						duration: 0.8,
-						easing: [0.22, 1, 0.36, 1]
+						ease: [0.22, 1, 0.36, 1] as const
 					}
 				);
 
