@@ -3,7 +3,6 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import Assistant from '$lib/components/Assistant.svelte';
-	import DevConsole from '$lib/components/DevConsole.svelte';
 
 	import type { PageData } from './$types';
 	import { resolve } from '$app/paths';
@@ -63,8 +62,6 @@
 </section>
 
 <Assistant />
-
-<DevConsole />
 
 <section class="grid gap-6 py-14 lg:grid-cols-[0.82fr_1.18fr]">
 	<div>

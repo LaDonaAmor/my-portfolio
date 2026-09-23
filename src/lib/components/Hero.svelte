@@ -510,7 +510,7 @@
 
 								<button
 									type="button"
-									class="run-btn inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[10px] font-bold tracking-wide uppercase transition"
+									class="run-btn inline-flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[10px] font-bold tracking-wide uppercase transition"
 									aria-label="Run command"
 									onclick={runCommand}
 								>
