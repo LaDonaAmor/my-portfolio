@@ -1,24 +1,46 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { revealOnScroll } from '$lib/animations/scrollReveal';
+	import { ArrowRight, CheckCircle2 } from 'lucide-svelte';
+	import { resolve } from '$app/paths';
 
-	const skills = [
-		'React',
-		'TypeScript',
-		'JavaScript (ES6+)',
-		'HTML5',
-		'CSS3',
-		'Tailwind CSS',
-		'Responsive Design',
-		'API Integration',
-		'Git & GitHub',
-		'UI/UX Principles'
+	const skillGroups = [
+		{
+			title: 'Build',
+			skills: ['React', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS']
+		},
+		{
+			title: 'Design for use',
+			skills: ['Responsive Design', 'Accessible UI', 'UI/UX Principles', 'API Integration']
+		},
+		{
+			title: 'Work with others',
+			skills: [
+				'Git & GitHub',
+				'Reusable components',
+				'Clear communication',
+				'Structured problem-solving'
+			]
+		}
+	];
+
+	const principles = [
+		{
+			title: 'Clarity',
+			body: 'I aim to make the next action easy to understand, whether someone is seeing a product for the first time or returning to complete a task.'
+		},
+		{
+			title: 'Accessibility',
+			body: 'I treat keyboard access, readable structure, and responsive behavior as part of the interface—not as finishing touches.'
+		},
+		{
+			title: 'Care',
+			body: 'My healthcare background shaped how I approach details: they matter because they affect how supported and capable people feel.'
+		}
 	];
 
 	const timeline = [
 		{
 			year: '2026 – Present',
-			title: 'Frontend Development Intern - HNG',
+			title: 'Frontend Development Intern — HNG',
 			body: 'Building production-focused frontend applications with React, emphasizing reusable components, API integration, responsive design, and scalable UI architecture.'
 		},
 		{
@@ -37,65 +59,142 @@
 			body: 'Worked in a high-responsibility healthcare environment strengthening precision, teamwork, and structured problem-solving.'
 		}
 	];
-
-	onMount(() => {
-		revealOnScroll('.reveal');
-	});
 </script>
 
 <svelte:head>
 	<title>About | Racheal Ogunmodede</title>
 	<meta
 		name="description"
-		content="About Racheal Ogunmodede, a Frontend developer focused on product-quality web interfaces."
+		content="Learn about Racheal Ogunmodede, a frontend developer bringing healthcare-informed care and precision to accessible digital products."
 	/>
-	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
-<section class="py-12">
-	<p class="reveal text-accent text-sm font-semibold tracking-[0.18em] uppercase">About</p>
-	<div class="mt-4 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-		<h1 class="reveal mt-6 font-display text-4xl font-semibold md:text-6xl">
+<section class="section-space">
+	<p class="eyebrow">About</p>
+
+	<div class="mt-5 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+		<h1 class="font-display text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">
 			I turn product ideas into interfaces people can trust.
 		</h1>
-		<div class="text-lg leading-8 text-muted">
-			<p class="reveal mt-6 max-w-3xl text-lg leading-8 text-muted">
-				I build React + TypeScript interfaces focused on clarity, usability, and performance. My
-				healthcare background brings discipline, precision, and human-centered thinking into
-				engineering.
+
+		<div>
+			<p class="max-w-2xl text-lg leading-8 text-muted">
+				I started in healthcare, where small details can change how safe and supported someone
+				feels. I now bring that same attention to frontend work: clear paths through a product,
+				accessible interactions, and interfaces that earn trust.
 			</p>
-			<p class="reveal mt-5">
-				My background in healthcare strengthens my attention to detail, analytical thinking,
-				teamwork, and ability to perform in high-responsibility environments. I am passionate about
-				building digital products that are practical, accessible, and impactful especially in
-				digital health systems.
-			</p>
+
+			<div class="paper-card mt-8 p-5 sm:p-6">
+				<p class="eyebrow">My path</p>
+
+				<ol class="mt-5 grid gap-4 sm:grid-cols-3">
+					<li>
+						<p class="font-mono text-xs text-accent">01</p>
+						<p class="mt-2 font-semibold">Healthcare</p>
+						<p class="mt-1 text-sm leading-6 text-muted">Precision, empathy, and responsibility.</p>
+					</li>
+
+					<li>
+						<p class="font-mono text-xs text-accent">02</p>
+						<p class="mt-2 font-semibold">Frontend learning</p>
+						<p class="mt-1 text-sm leading-6 text-muted">
+							Building clear and responsive interfaces.
+						</p>
+					</li>
+
+					<li>
+						<p class="font-mono text-xs text-accent">03</p>
+						<p class="mt-2 font-semibold">Product-minded work</p>
+						<p class="mt-1 text-sm leading-6 text-muted">Making digital tools easier to use.</p>
+					</li>
+				</ol>
+			</div>
 		</div>
 	</div>
 </section>
 
-<section class="py-16">
-	<h2 class="reveal font-display text-2xl font-semibold">Core skills</h2>
+<section class="section-space border-t border-line">
+	<p class="eyebrow">How I work</p>
+	<h2 class="mt-3 font-display text-4xl sm:text-5xl">Careful by design.</h2>
 
-	<ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-		{#each skills as skill (skill)}
-			<li class="reveal rounded-lg border border-line bg-surface/70 px-4 py-3">
-				{skill}
-			</li>
-		{/each}
-	</ul>
-</section>
-
-<section class="py-16">
-	<h2 class="reveal font-display text-2xl font-semibold">Experience</h2>
-
-	<div class="mt-8 space-y-6">
-		{#each timeline as item (item.title)}
-			<article class="reveal rounded-xl border border-line bg-surface/70 p-6">
-				<p class="text-accent text-sm font-semibold">{item.year}</p>
-				<h3 class="mt-2 text-xl font-semibold">{item.title}</h3>
-				<p class="mt-3 leading-7 text-muted">{item.body}</p>
+	<div class="mt-10 grid gap-4 md:grid-cols-3">
+		{#each principles as principle (principle.title)}
+			<article class="paper-card p-6">
+				<CheckCircle2 size={20} class="text-accent" />
+				<h3 class="mt-5 font-display text-2xl">{principle.title}</h3>
+				<p class="mt-3 leading-7 text-muted">{principle.body}</p>
 			</article>
 		{/each}
+	</div>
+</section>
+
+<section class="section-space border-t border-line">
+	<p class="eyebrow">Skills</p>
+	<h2 class="mt-3 font-display text-4xl sm:text-5xl">What I bring to the work.</h2>
+
+	<div class="mt-10 grid gap-5 lg:grid-cols-3">
+		{#each skillGroups as group (group.title)}
+			<section class="paper-card p-6">
+				<h3 class="font-display text-2xl">{group.title}</h3>
+
+				<ul class="mt-5 space-y-3">
+					{#each group.skills as skill (skill)}
+						<li class="flex items-center gap-2 text-sm text-muted">
+							<span class="size-1.5 rounded-full bg-accent"></span>
+							{skill}
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/each}
+	</div>
+</section>
+
+<section class="section-space border-t border-line">
+	<p class="eyebrow">Experience</p>
+	<h2 class="mt-3 font-display text-4xl sm:text-5xl">Learning through real work.</h2>
+
+	<div class="relative mt-10 ml-2 border-l border-line pl-7 sm:ml-4 sm:pl-10">
+		{#each timeline as item (item.title)}
+			<article class="relative pb-10 last:pb-0">
+				<span
+					class="absolute top-1 left-[-2.15rem] size-3 rounded-full border-2 border-bg bg-accent sm:left-[-2.9rem]"
+					aria-hidden="true"
+				></span>
+
+				<time class="font-mono text-xs tracking-wider text-accent uppercase">{item.year}</time>
+				<h3 class="mt-2 font-display text-2xl">{item.title}</h3>
+				<p class="mt-3 max-w-3xl leading-7 text-muted">{item.body}</p>
+			</article>
+		{/each}
+	</div>
+</section>
+
+<section class="section-space border-t border-line">
+	<div
+		class="paper-card flex flex-col items-start justify-between gap-6 p-7 sm:p-10 lg:flex-row lg:items-center"
+	>
+		<div>
+			<p class="eyebrow">Next step</p>
+			<h2 class="mt-3 font-display text-4xl">See the work, then start a conversation.</h2>
+		</div>
+
+		<div class="flex flex-wrap gap-3">
+			<a
+				class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 font-semibold text-ink"
+				href={resolve('/projects')}
+			>
+				View projects
+				<ArrowRight size={16} />
+			</a>
+
+			<a
+				class="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 font-semibold transition hover:bg-surface-2"
+				href={resolve('/contact')}
+			>
+				Get in touch
+				<ArrowRight size={16} />
+			</a>
+		</div>
 	</div>
 </section>

@@ -383,14 +383,14 @@
 								>
 							</div>
 
-							<span class="text-accent font-mono text-[10px] font-bold tracking-[0.2em] uppercase">
+							<span class="font-mono text-[10px] font-bold tracking-[0.2em] text-accent uppercase">
 								portfolio.console
 							</span>
 
 							<span
 								class="badge-live flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-bold tracking-[0.14em] uppercase"
 							>
-								<span class="bg-accent size-1.5 animate-pulse rounded-full"></span>
+								<span class="size-1.5 animate-pulse rounded-full bg-accent"></span>
 								Interactive
 							</span>
 						</div>
@@ -408,7 +408,7 @@
 									aria-pressed={activeTab === tab}
 								>
 									{#if activeTab === tab}
-										<span class="bg-accent absolute inset-x-0 top-0 h-0.5"></span>
+										<span class="absolute inset-x-0 top-0 h-0.5 bg-accent"></span>
 									{/if}
 
 									{#if tab === 'Profile.ts'}
@@ -445,7 +445,7 @@
 								<span class="w-4 text-right text-muted/40 select-none">
 									{codeFiles[activeTab].length + 1}
 								</span>
-								<span class="bg-accent mt-1 h-4 w-1.5 animate-pulse"></span>
+								<span class="mt-1 h-4 w-1.5 animate-pulse bg-accent"></span>
 							</div>
 						</div>
 
@@ -460,7 +460,7 @@
 
 								<button
 									type="button"
-									class="hover:text-accent inline-flex items-center gap-1 text-[10px] text-muted transition"
+									class="inline-flex items-center gap-1 text-[10px] text-muted transition hover:text-accent"
 									onclick={() => {
 										commandInput = 'help';
 										runCommand();
@@ -493,7 +493,7 @@
 							<div
 								class="command-bar flex items-center gap-2 rounded-lg border px-3 py-2 font-mono text-xs"
 							>
-								<span class="text-accent font-bold">➜</span>
+								<span class="font-bold text-accent">➜</span>
 								<span class="text-sky-400">~</span>
 
 								<label class="sr-only" for="hero-command">Portfolio command</label>
@@ -502,7 +502,7 @@
 									type="text"
 									bind:value={commandInput}
 									onkeydown={handleCommandKeydown}
-									class="caret-accent flex-1 border-0 bg-transparent p-0 text-fg outline-none placeholder:text-muted/60"
+									class="flex-1 border-0 bg-transparent p-0 text-fg caret-accent outline-none placeholder:text-muted/60"
 									placeholder="Type a command and press Enter..."
 									spellcheck="false"
 									autocomplete="off"
@@ -812,6 +812,73 @@
 		.orb-a,
 		.orb-b,
 		.orb-c {
+			display: none;
+		}
+	}
+
+	/* Editorial visual treatment: preserves the floating console, softens the dashboard feel. */
+	.hero-root {
+		min-height: clamp(42rem, 78vh, 54rem);
+	}
+
+	.cursor-glow {
+		opacity: 0.35;
+	}
+
+	.grid-veil {
+		opacity: 0.28;
+	}
+
+	.orb-a,
+	.orb-b,
+	.orb-c {
+		opacity: 0.09;
+	}
+
+	.console-wrap {
+		animation: console-float 9s ease-in-out infinite;
+	}
+
+	@keyframes console-float {
+		0%,
+		100% {
+			transform: translateY(0) rotate(1deg);
+		}
+		50% {
+			transform: translateY(-10px) rotate(-0.5deg);
+		}
+	}
+
+	.console-card {
+		border-radius: 1.5rem;
+		border-color: color-mix(in srgb, var(--color-line) 82%, var(--color-accent));
+		background: var(--color-surface);
+		box-shadow:
+			12px 12px 0 color-mix(in srgb, var(--color-accent) 10%, transparent),
+			0 18px 48px rgba(0, 0, 0, 0.16);
+	}
+
+	.console-body {
+		border-radius: calc(1.5rem - 1px);
+		background: color-mix(in srgb, var(--color-surface) 96%, var(--color-bg));
+	}
+
+	.card-glow {
+		opacity: 0.35;
+	}
+
+	.badge,
+	.badge-live {
+		border-radius: 999px;
+	}
+
+	.stats-row {
+		border-color: var(--color-line);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.cursor-glow,
+		.grid-veil {
 			display: none;
 		}
 	}
