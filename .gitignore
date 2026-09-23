@@ -1,5 +1,8 @@
 node_modules
 
+# Package manager cache
+.pnpm-store/
+
 # Output
 .output
 .vercel
