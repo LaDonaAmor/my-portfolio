@@ -74,7 +74,7 @@
 			required
 			maxlength="100"
 			disabled={loading}
-			class="focus:border-accent rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 disabled:opacity-60"
+			class="rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 focus:border-accent disabled:opacity-60"
 			placeholder="Your name"
 		/>
 	</label>
@@ -87,7 +87,7 @@
 			required
 			maxlength="255"
 			disabled={loading}
-			class="focus:border-accent rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 disabled:opacity-60"
+			class="rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 focus:border-accent disabled:opacity-60"
 			placeholder="you@example.com"
 		/>
 	</label>
@@ -100,7 +100,7 @@
 			maxlength="1000"
 			rows="5"
 			disabled={loading}
-			class="focus:border-accent resize-y rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 disabled:opacity-60"
+			class="resize-y rounded-lg border border-line bg-surface px-4 py-3 text-fg transition outline-none placeholder:text-muted/50 focus:border-accent disabled:opacity-60"
 			placeholder="Tell me what you're building."
 		></textarea>
 	</label>
@@ -115,7 +115,7 @@
 	{/if}
 
 	{#if sent}
-		<p class="border-accent/30 bg-accent/10 text-accent rounded-lg border px-3 py-2 text-sm">
+		<p class="rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent">
 			Thanks! Your message has been sent. I'll get back to you soon.
 		</p>
 	{/if}
@@ -123,7 +123,7 @@
 	<button
 		type="submit"
 		disabled={loading}
-		class="bg-accent text-accent inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold transition hover:brightness-110 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
+		class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 font-semibold text-accent transition hover:brightness-110 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60"
 	>
 		{loading ? 'Sending...' : 'Send Message'}
 		<Send size="17" />

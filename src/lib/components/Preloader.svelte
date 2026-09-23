@@ -20,15 +20,15 @@
 		aria-hidden="true"
 	>
 		<div
-			class="text-center motion-safe:animate-loader-pulse motion-reduce:animate-none"
+			class="motion-safe:animate-loader-pulse text-center motion-reduce:animate-none"
 			aria-hidden="true"
 		>
 			<div
-				class="border-accent/40 bg-accent/10 text-accent mx-auto grid size-16 place-items-center rounded-2xl border"
+				class="mx-auto grid size-16 place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent"
 			>
 				TN
 			</div>
-			<p class="text-accent mt-4 font-display text-sm font-semibold tracking-[0.24em] uppercase">
+			<p class="mt-4 font-display text-sm font-semibold tracking-[0.24em] text-accent uppercase">
 				Loading Portfolio
 			</p>
 		</div>

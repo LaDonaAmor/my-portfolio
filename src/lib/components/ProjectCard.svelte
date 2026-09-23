@@ -38,7 +38,7 @@
 
 <article
 	id={slug}
-	class="group hover:border-accent/50 overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300 transform-3d motion-safe:animate-fade-up motion-safe:hover:transform-[perspective(1100px)_rotateX(1.8deg)_rotateY(-2.2deg)_translateY(-4px)] motion-reduce:animate-none motion-reduce:hover:transform-none"
+	class="group motion-safe:animate-fade-up overflow-hidden rounded-xl border border-line bg-surface/82 shadow-[0_18px_50px_rgba(2,8,23,0.18)] transition duration-300 transform-3d hover:border-accent/50 motion-safe:hover:transform-[perspective(1100px)_rotateX(1.8deg)_rotateY(-2.2deg)_translateY(-4px)] motion-reduce:animate-none motion-reduce:hover:transform-none"
 	style="animation-delay: {index * 80}ms"
 >
 	<div
@@ -71,7 +71,7 @@
 
 	<div class="p-5">
 		<div class="flex items-center justify-between gap-3">
-			<p class="text-accent text-xs font-semibold tracking-[0.16em] uppercase">{impact}</p>
+			<p class="text-xs font-semibold tracking-[0.16em] text-accent uppercase">{impact}</p>
 			<span class="rounded-full border border-line px-2.5 py-1 text-xs text-muted">{category}</span>
 		</div>
 
@@ -95,7 +95,7 @@
 				href={resolveLink(demo)}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="hover:border-accent/50 hover:text-accent inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition"
+				class="inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition hover:border-accent/50 hover:text-accent"
 			>
 				Live Demo
 				<ArrowUpRight size="15" />
@@ -104,7 +104,7 @@
 				href={resolveLink(repo)}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="hover:border-accent/50 hover:text-accent inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition"
+				class="inline-flex items-center gap-1.5 rounded-md border border-line px-3 py-2 transition hover:border-accent/50 hover:text-accent"
 			>
 				<Code2 size="15" />
 				GitHub Repo

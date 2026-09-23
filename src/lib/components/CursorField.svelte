@@ -48,6 +48,6 @@
 
 <div
 	class:opacity-100={active}
-	class="border-accent/70 pointer-events-none fixed top-[calc(var(--cursor-y,-20rem)-9px)] left-[calc(var(--cursor-x,-20rem)-9px)] z-30 size-4.5 transform-[translateZ(0)] rounded-full border opacity-0 [box-shadow:0_0_22px_color-mix(in_oklab,var(--color-accent)_70%,transparent)] transition-opacity duration-180 motion-reduce:hidden"
+	class="pointer-events-none fixed top-[calc(var(--cursor-y,-20rem)-9px)] left-[calc(var(--cursor-x,-20rem)-9px)] z-30 size-4.5 transform-[translateZ(0)] rounded-full border border-accent/70 opacity-0 [box-shadow:0_0_22px_color-mix(in_oklab,var(--color-accent)_70%,transparent)] transition-opacity duration-180 motion-reduce:hidden"
 	aria-hidden="true"
 ></div>
